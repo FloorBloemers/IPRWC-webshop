@@ -7,10 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'iprwc-webshop';
-
-  loadedFeature = 'recipe';
-
-  onNavigate(feature:string) {
-    this.loadedFeature = feature;
-  }
 }
