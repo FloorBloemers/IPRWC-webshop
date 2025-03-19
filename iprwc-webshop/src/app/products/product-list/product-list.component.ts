@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import { product } from "../products.model";
+import {Product} from "../products.model";
 import {productsService} from "../products.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Subscription} from "rxjs";
@@ -10,24 +10,24 @@ import {Subscription} from "rxjs";
   styleUrl: './product-list.component.scss'
 })
 export class productListComponent implements OnInit, OnDestroy{
-  products: product[];
+  products: Product[];
   subscription: Subscription;
 
   constructor(private productService: productsService, private router: Router, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.subscription = this.productService.productsChanged.subscribe((products: product[]) => {
+    this.subscription = this.productService.productsChanged.subscribe((products: Product[]) => {
       this.products = products;
     });
-    this.products = this.productService.getproducts();
+    this.products = this.productService.getProducts();
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
-  onNewproduct() {
+  onNewProduct() {
     this.router.navigate(['new'], {relativeTo: this.route});
   }
 }

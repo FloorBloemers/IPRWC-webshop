@@ -14,20 +14,21 @@
       <button type="button" class="btn btn-primary dropdown-toggle">Manage product <span class="caret"></span></button>
       <ul class="dropdown-menu">
         <li><a (click)="onAddToShoppingList()" style="cursor: pointer;">Shopping List</a></li>
-        <li><a style="cursor: pointer" (click)="onEditproduct()">Edit product</a></li>
-        <li><a style="cursor: pointer" (click)="onDeleteproduct()">Delete product</a></li>
+        <li><a style="cursor: pointer" (click)="onEditProduct()">Edit product</a></li>
+        <li><a style="cursor: pointer" (click)="onDeleteProduct()">Delete product</a></li>
       </ul>
     </div>
   </div>
 </div>
+<br>
 <div class="row">
   <div class="col-xs-12">
     {{ product.description }}
   </div>
 </div>
+<br>
 <div class="row">
   <div class="col-xs-12">
-    <ul class="list-group"></ul>
-    <li class="list-group-item" *ngFor="let ingredient of product.ingredients">{{ ingredient.name }} - {{ ingredient.amount }}</li>
+    ${{ product.price }}
   </div>
 </div>

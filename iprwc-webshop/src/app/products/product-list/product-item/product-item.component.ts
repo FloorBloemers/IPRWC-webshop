@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import { product } from "../../products.model";
+import {Product} from "../../products.model";
 
 @Component({
   selector: 'app-product-item',
@@ -7,6 +7,6 @@ import { product } from "../../products.model";
   styleUrl: './product-item.component.scss'
 })
 export class productItemComponent {
-  @Input() product: product;
+  @Input() product: Product;
   @Input() index: number;
 }

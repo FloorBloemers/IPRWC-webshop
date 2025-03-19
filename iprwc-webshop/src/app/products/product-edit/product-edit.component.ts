@@ -26,9 +26,9 @@ export class productEditComponent implements OnInit{
 
   onSubmit() {
     if (this.editMode) {
-      this.productService.updateproduct(this.id, this.productForm.value);
+      this.productService.updateProduct(this.id, this.productForm.value);
     } else {
-      this.productService.addproduct(this.productForm.value);
+      this.productService.addProduct(this.productForm.value);
     }
     this.onCancel();
   }
@@ -37,53 +37,25 @@ export class productEditComponent implements OnInit{
     this.router.navigate(['../'], {relativeTo: this.route});
   }
 
-  onAddIngredient() {
-    (<FormArray>this.productForm.get('ingredients')).push(new FormGroup({
-      'name': new FormControl(null, Validators.required),
-      'amount': new FormControl(null, [
-        Validators.required,
-        Validators.pattern(/^[1-9]+[0-9]*$/)
-      ]),
-    }));
-  }
-
-  onDeleteIngredient(index: number) {
-    (<FormArray>this.productForm.get('ingredients')).removeAt(index);
-  }
-
-  get controls() {
-    return (<FormArray>this.productForm.get('ingredients')).controls;
-  }
-
   private initForm() {
     let productName = '';
     let productImagePath = '';
     let productDescription = '';
-    let productIngredients = new FormArray([]);
+    let productPrice: number;
 
     if (this.editMode) {
-      const product = this.productService.getproduct(this.id);
+      const product = this.productService.getProduct(this.id);
       productName = product.name;
       productImagePath = product.imagePath;
       productDescription = product.description;
-      if (product['ingredients']) {
-        for (let ingredient of product.ingredients) {
-          productIngredients.push(new FormGroup({
-            'name': new FormControl(ingredient.name, Validators.required),
-            'amount': new FormControl(ingredient.amount, [
-              Validators.required,
-              Validators.pattern(/^[1-9]+[0-9]*$/)
-            ])
-          }))
-        }
-      }
+      productPrice = product.price;
     }
 
     this.productForm = new FormGroup({
       'name' : new FormControl(productName, Validators.required),
       'imagePath' : new FormControl(productImagePath, Validators.required),
       'description' : new FormControl(productDescription, Validators.required),
-      'ingredients': productIngredients
+      'price': new FormControl(productPrice, Validators.required)
     });
   }
 

@@ -16,6 +16,7 @@ import {AppRoutingModule} from "./app-routing.module";
 import { productStartComponent } from './products/product-start/product-start.component';
 import { productEditComponent } from './products/product-edit/product-edit.component';
 import {productsService} from "./products/products.service";
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {productsService} from "./products/products.service";
     ShoppingEditComponent,
     DropdownDirective,
     productStartComponent,
-    productEditComponent
+    productEditComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
