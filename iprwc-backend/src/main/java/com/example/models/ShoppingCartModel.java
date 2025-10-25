@@ -1,3 +1,5 @@
+package com.example.models;
+
 import jakarta.persistence.*;
 import lombok.*;
 

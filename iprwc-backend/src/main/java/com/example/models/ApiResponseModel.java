@@ -1,3 +1,5 @@
+package com.example.models;
+
 import org.springframework.http.HttpStatus;
 
 public class ApiResponseModel<Type> {

@@ -1,6 +1,10 @@
-import jakanta.persisntence.*;
+package com.example.models;
+
+import jakarta.persistence.*;
 import lombok.*;
-import orh.hibernate.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
 
 @Entity
 @NoArgsConstructor

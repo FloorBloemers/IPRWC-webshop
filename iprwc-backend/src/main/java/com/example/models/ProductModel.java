@@ -1,18 +1,20 @@
-import jakanta.persisntence.*;
+package com.example.models;
+
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
 @NoArgsConstructor
-@Table(name = products)
+@Table(name = "products")
 public class ProductModel {
     @Id
     private Long id;
     private String name;
     private String description;
     private String imagePath;
-    private number price;
+    private double price;
 
-    public ProductModel(Long id, String name, String description, String imagePath, number price) {
+    public ProductModel(Long id, String name, String description, String imagePath, double price) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -36,7 +38,7 @@ public class ProductModel {
         return imagePath;
     }
 
-    public number getPrice() {
+    public double getPrice() {
         return price;
     }
 
@@ -56,7 +58,7 @@ public class ProductModel {
         this.imagePath = imagePath;
     }
 
-    public void setPrice(number price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 }
