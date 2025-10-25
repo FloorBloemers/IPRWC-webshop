@@ -2,9 +2,9 @@ package com.example.repository;
 
 import com.example.models.UserModel;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-@Repository
+import java.util.Optional;
+
 public interface UserRepository extends JpaRepository<UserModel, Long> {
-    UserModel findByName(String name);
+    Optional<UserModel> findByName(String username);
 }
