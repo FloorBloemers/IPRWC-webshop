@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/carts")
+@CrossOrigin(origins = {"http://localhost:4200"})
 public class ShoppingCartController {
     private final ShoppingCartService service;
 
