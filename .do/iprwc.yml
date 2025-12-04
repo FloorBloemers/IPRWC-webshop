@@ -9,7 +9,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://app-ec8b79b1-8947-45f0-aaa6-9553202e78f4-do-user-18873855-0.k.db.ondigitalocean.com:25060/iprwc?sslmode=require
-      - SPRING_DATASOURCE_USERNAME=iprwc
-      - SPRING_DATASOURCE_PASSWORD=AVNS_d0K_Y8EBiKsrPE7xJU6
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://iprwc-do-user-18873855-0.k.db.ondigitalocean.com:25060/defaultdb?sslmode=require
+      - SPRING_DATASOURCE_USERNAME=doadmin
+      - SPRING_DATASOURCE_PASSWORD=AVNS_KNUmdVRDHjGAHDw3-G1
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
