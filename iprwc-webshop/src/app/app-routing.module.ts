@@ -1,20 +1,33 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
+import {LoginComponent} from "./login/login.component";
+import {RegisterComponent} from "./register/register.component";
 import {productsComponent} from "./products/products.component";
 import {ShoppingListComponent} from "./shopping-list/shopping-list.component";
-import {productStartComponent} from "./products/product-start/product-start.component";
-import {productDetailComponent} from "./products/product-detail/product-detail.component";
-import {productEditComponent} from "./products/product-edit/product-edit.component";
+import {HomeComponent} from "./home/home.component";
+import {ProductComponent} from "./product/product.component";
+import {CartComponent} from "./cart/cart.component";
+import {AportalComponent} from "./aportal/aportal.component";
+import {CportalComponent} from "./cportal/cportal.component";
+import {CheckoutComponent} from "./checkout/checkout.component";
+import {CustomerFormComponent} from "./customer-form/customer-form.component";
+import {ConfirmOrderComponent} from "./confirm-order/confirm-order.component";
+
 
 const appRoutes: Routes = [
-  { path: '' , redirectTo: '/products', pathMatch: 'full'},
-  { path: 'products' , component: productsComponent, children: [
-      {path: '', component: productStartComponent},
-      {path: 'new', component: productEditComponent},
-      {path: ':id', component: productDetailComponent},
-      {path: ':id/edit', component: productEditComponent}
-    ]},
-  { path: 'shopping-list' , component: ShoppingListComponent},
+  { path: '' , redirectTo: '/home', pathMatch: 'full'},
+  { path: 'login' , component: LoginComponent},
+  { path: 'register' , component: RegisterComponent},
+  { path: 'products' , component: productsComponent},
+  { path: 'home' , component: HomeComponent},
+  { path: 'products/:id' , component: ProductComponent},
+  { path: 'cart' , component: CartComponent},
+  { path: 'admin' , component: AportalComponent},
+  { path: 'checkout' , component: CheckoutComponent},
+  { path: 'customer-form' , component: CustomerFormComponent},
+  { path: 'confirm-order' , component: ConfirmOrderComponent},
+  { path: 'account' , component: CportalComponent},
+
 ];
 
 @NgModule({

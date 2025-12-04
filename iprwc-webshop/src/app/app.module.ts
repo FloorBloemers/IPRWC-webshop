@@ -18,6 +18,15 @@ import { productStartComponent } from './products/product-start/product-start.co
 import { productEditComponent } from './products/product-edit/product-edit.component';
 import {productsService} from "./products/products.service";
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { CartComponent } from './cart/cart.component';
+import { CportalComponent } from './cportal/cportal.component';
+import { AportalComponent } from './aportal/aportal.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { CustomerFormComponent } from './customer-form/customer-form.component';
+import { ConfirmOrderComponent } from './confirm-order/confirm-order.component';
+import { HomeComponent } from './home/home.component';
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +41,16 @@ import { LoginComponent } from './login/login.component';
     DropdownDirective,
     productStartComponent,
     productEditComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent,
+    CartComponent,
+    CportalComponent,
+    AportalComponent,
+    CheckoutComponent,
+    CustomerFormComponent,
+    ConfirmOrderComponent,
+    HomeComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
