@@ -53,25 +53,37 @@ public class SpringConfig {
         return new BCryptPasswordEncoder();
     }
 
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//        return http
+//                .csrf(AbstractHttpConfigurer::disable)
+//                .cors(Customizer.withDefaults())
+//                .authorizeHttpRequests(request -> request
+//                        .requestMatchers("/api/v1/auth/**",
+//                                "/api/v1/products",
+//                                "/api/v1/categories",
+//                                "/api/v1/login",
+//                                "/api/v1/home",
+//                                "/api/v1/customers/no-account",
+//                                "/api/v1/orders/no-account").permitAll()
+//                        .anyRequest().authenticated()
+//                )
+//                .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+//                .authenticationProvider(authenticationProvider())
+//                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+//
+//                .build();
+//    }
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .csrf(AbstractHttpConfigurer::disable)
-                .cors(Customizer.withDefaults())
-                .authorizeHttpRequests(request -> request
-                        .requestMatchers("/api/v1/auth/**",
-                                "/api/v1/products",
-                                "/api/v1/categories",
-                                "/api/v1/login",
-                                "/api/v1/home",
-                                "/api/v1/customers/no-account",
-                                "/api/v1/orders/no-account").permitAll()
-                        .anyRequest().authenticated()
+                .csrf(AbstractHttpConfigurer::disable)   // disable CSRF
+                .cors(Customizer.withDefaults())         // keep CORS enabled
+                .authorizeHttpRequests(auth -> auth
+                        .anyRequest().permitAll()        // allow ALL requests
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authenticationProvider(authenticationProvider())
-                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-
-                .build();
+                .build();                                // no authenticationProvider or JWT filter
     }
 }
