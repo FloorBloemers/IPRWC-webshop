@@ -16,5 +16,5 @@ WORKDIR /app
 # Copy Spring Boot jar
 COPY --from=backend-build /app/target/demo-0.0.1-SNAPSHOT.jar app.jar
 # Copy Angular build into static resources
-COPY --from=frontend-build /app/dist/your-app /app/static
+COPY --from=frontend-build /app/dist/iprwc-webshop /app/static
 ENTRYPOINT ["java","-jar","app.jar"]
