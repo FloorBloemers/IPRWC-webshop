@@ -7,7 +7,7 @@ RUN npm install && npm run build
 # Stage 2: Build Spring Boot
 FROM maven:3.9.6-eclipse-temurin-17 AS backend-build
 WORKDIR /app
-COPY backend/ .
+COPY iprwc-backend/ .
 RUN mvn clean package -DskipTests
 
 # Stage 3: Final image
