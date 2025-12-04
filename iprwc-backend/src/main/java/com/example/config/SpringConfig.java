@@ -62,6 +62,8 @@ public class SpringConfig {
                         .requestMatchers("/api/v1/auth/**",
                                 "/api/v1/products",
                                 "/api/v1/categories",
+                                "/api/v1/login",
+                                "/api/v1/home"
                                 "/api/v1/customers/no-account",
                                 "/api/v1/orders/no-account").permitAll()
                         .anyRequest().authenticated()
