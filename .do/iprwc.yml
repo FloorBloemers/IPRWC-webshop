@@ -6,11 +6,11 @@ services:
     container_name: psql-db
     restart: always
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=iprwc
+      - POSTGRES_PASSWORD=AVNS_d0K_Y8EBiKsrPE7xJU6
       - POSTGRES_DB=iprwc
     ports:
-      - '5432:5432'
+      - '25060:25060'
 
   iprwc:
     container_name: iprwc-webshop
@@ -20,9 +20,9 @@ services:
     ports:
       - '8080:8080'
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://psql-db:5432/iprwc
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://app-ec8b79b1-8947-45f0-aaa6-9553202e78f4-do-user-18873855-0.k.db.ondigitalocean.com:25060/iprwc?sslmode=require
+      - SPRING_DATASOURCE_USERNAME=iprwc
+      - SPRING_DATASOURCE_PASSWORD=AVNS_d0K_Y8EBiKsrPE7xJU6
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
     depends_on:
       - psql-db
