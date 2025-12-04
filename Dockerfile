@@ -1,7 +1,7 @@
 # Stage 1: Build Angular
 FROM node:18 AS frontend-build
 WORKDIR /app
-COPY frontend/ .
+COPY iprwc-webshop/ .
 RUN npm install && npm run build
 
 # Stage 2: Build Spring Boot
