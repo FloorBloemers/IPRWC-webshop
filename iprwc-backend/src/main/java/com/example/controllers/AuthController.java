@@ -39,13 +39,7 @@ public class AuthController {
             return new ApiResponse<>("User already exists", HttpStatus.BAD_REQUEST);
         }
 
-        User savedUser = tokenResponse.get();
-        Customer customer = new Customer();
-        customer.setName(savedUser.getUsername());
-        customer.setOptionalRegisteredUser(savedUser);
-        customerService.save(customer);
-
-        String token = tokenResponse.get();
+         String token = tokenResponse.get();
 
         return new ApiResponse<>(new AuthResponseDTO(token));
     }
