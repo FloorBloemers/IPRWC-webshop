@@ -43,7 +43,7 @@ public class CustomerController {
     @GetMapping("/logged-in")
     public ResponseEntity<Customer> getLoggedInCustomer(@RequestHeader("Authorization") String request) {
         String jwt = jwtService.getJwtFromToken(request);
-        String userId = jwtService.extractUserId(jwt);
+        String username = jwtService.extractUserId(jwt);
         Customer customer = customerService.getCustomerByUsername(username);
 
 
