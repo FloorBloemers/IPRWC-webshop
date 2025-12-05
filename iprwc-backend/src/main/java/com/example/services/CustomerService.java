@@ -37,7 +37,7 @@ public class CustomerService {
     }
 
     public Customer getCustomerByUsername(String username) {
-        return customerRepository.findByUsername(username).orElse(null);
+        return customerRepository.findByName(username).orElse(null);
     }
 
     public Customer createCustomer(Customer customer) {

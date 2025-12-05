@@ -14,6 +14,7 @@ public class Customer {
 
     @Setter
     @Getter
+    @Column(unique = true)
     private String name;
 
     @Setter
