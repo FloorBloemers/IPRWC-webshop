@@ -33,13 +33,27 @@ export class LoginComponent {
       .subscribe({
         next: (data) => {
           this.toastr.success('Login successful', 'Success');
-          this.router.navigate(['/home']);
-          this.customerService.getCustomerFromApi();
+
+          this.customerService.getCustomerFromApi().subscribe({
+            next: (customer) => {
+              // Customer exists → save and go home
+              this.customerService.setCustomer(customer);
+              this.router.navigate(['/home']);
+            },
+            error: (err) => {
+              if (err.status === 404) {
+                this.toastr.info('Please complete your customer profile');
+                this.router.navigate(['/login']);
+              } else {
+                this.toastr.error('Error fetching customer', 'Error');
+              }
+            }
+          });
         },
         error: (error) => {
           console.error(error);
           this.toastr.error('Invalid username or password', 'Error');
-        },
+        }
       });
   }
 }

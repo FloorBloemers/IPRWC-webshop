@@ -23,6 +23,9 @@ export class HeaderComponent implements OnInit{
   ngOnInit() {
     this.username = this.authService.getUsername();
     this.isAdmin = this.authService.isAdmin();
+    this.authService.getUsernameObservable().subscribe(name => {
+      this.username = name;
+    });
   }
 
   logout() {

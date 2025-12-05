@@ -44,18 +44,13 @@ public class CustomerController {
     public ResponseEntity<Customer> getLoggedInCustomer(@RequestHeader("Authorization") String request) {
         String jwt = jwtService.getJwtFromToken(request);
         String userId = jwtService.extractUserId(jwt);
-        Customer customer = customerService.getCustomerByUserId(UUID.fromString(userId));
+        Customer customer = customerService.getCustomerByUsername(username);
 
-        if (customer == null) {
-            // return 404 Not Found instead of 500
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
 
         customer.setOptionalRegisteredUser(null);
         return ResponseEntity.ok(customer);
     }
 
-    // Endpoint to create a new customer
     @PostMapping
     public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer, @RequestHeader("Authorization") String request) {
         String jwt = jwtService.getJwtFromToken(request);

@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Customer} from "./models/customer.model";
 import {ApiService} from "./shared/services/api.service";
+import {map, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -11,17 +12,16 @@ export class CustomerService {
   constructor(private apiService: ApiService) {
   }
 
-  getCustomerFromApi() {
-    this.apiService.getLoggedInCustomer().subscribe({
-      next: (response) => {
+  getCustomerFromApi(): Observable<Customer> {
+    return this.apiService.getLoggedInCustomer().pipe(
+      map((response) => {
         if (response.status === 200) {
-          let body = JSON.stringify(response.body);
-          this.customer = JSON.parse(body);
+          return response.body as Customer;
         } else {
-          console.error('An error occured when checking for existing customer');
+          throw new Error('Unexpected status when fetching customer');
         }
-      }
-    })
+      })
+    );
 
   }
 

@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
+import {BehaviorSubject, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  private usernameSubject = new BehaviorSubject<string | null>(sessionStorage.getItem('username'));
 
   signout() {
     sessionStorage.removeItem('token');
@@ -11,6 +13,8 @@ export class AuthService {
   }
 
   parseToken = (token: string) => {
+    console.log('JWT claims:', this.parseToken(token));
+
     const base64Url = token.split('.')[1];
     const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
     const jsonPayload = decodeURIComponent(atob(base64));
@@ -41,6 +45,7 @@ export class AuthService {
 
   public setUsername(username: string): void {
     sessionStorage.setItem('username', username);
+    this.usernameSubject.next(username);
   }
 
   public getToken() {
@@ -49,5 +54,9 @@ export class AuthService {
 
   public getUsername() {
     return sessionStorage.getItem('username');
+  }
+
+  public getUsernameObservable(): Observable<string | null> {
+    return this.usernameSubject.asObservable();
   }
 }
