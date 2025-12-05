@@ -1,0 +1,71 @@
+[33mfa380b8[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m HEAD@{0}: reset: moving to fa380b85873d9c66ec48fe5c076c73a7da31c289
+[33mc7b2644[m[33m ([m[1;31morigin/master[m[33m)[m HEAD@{1}: commit: removed customer from register
+[33mf6cce94[m HEAD@{2}: commit: removed customer from register
+[33m6ce079e[m HEAD@{3}: commit: imports
+[33mf1bffea[m HEAD@{4}: commit: added customer creation
+[33mef7cc82[m HEAD@{5}: commit: added debug log
+[33m675dd28[m HEAD@{6}: commit: added ordering + cart
+[33m05811c9[m HEAD@{7}: commit: added logout
+[33m6e497e5[m HEAD@{8}: commit: added finbyusername
+[33m98311b5[m HEAD@{9}: commit: added finbyusername
+[33mc0560d4[m HEAD@{10}: commit: added finbyusername
+[33mb8c1d62[m HEAD@{11}: commit: added finbyusername
+[33m6ba413d[m HEAD@{12}: commit: fixed typo
+[33me41c9a5[m HEAD@{13}: commit: login fix
+[33mfa380b8[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m HEAD@{14}: commit: added login and register
+[33m9220b08[m HEAD@{15}: commit: added login and register
+[33m422a4b0[m HEAD@{16}: commit: updated image uri's loading in frontend for single products
+[33m4b62bfe[m HEAD@{17}: commit: updated image uri's
+[33m017ca0d[m HEAD@{18}: commit: connected frontend + changed products seeder
+[33m10f62c2[m HEAD@{19}: commit: corrected placement of files
+[33m65add8a[m HEAD@{20}: commit: fixed typo
+[33mc06a4fa[m HEAD@{21}: commit: fixed typo
+[33mf507387[m HEAD@{22}: commit: added frontend with new spring jar
+[33m8e9b6d9[m HEAD@{23}: commit: accept all requests to debug
+[33m7a935cd[m HEAD@{24}: commit: added app to cors
+[33mcddc9bd[m HEAD@{25}: commit: fixed typo
+[33m2b34356[m HEAD@{26}: commit: added permit all
+[33m5982e2e[m HEAD@{27}: commit: fixed db name typo
+[33mb8f9a0d[m HEAD@{28}: commit: fixed db name typo
+[33mf80244f[m HEAD@{29}: commit: db update to cluster
+[33m0340827[m HEAD@{30}: commit: changed db schema
+[33m7894f4f[m HEAD@{31}: commit: changed db schema
+[33m18f5668[m HEAD@{32}: commit: changed db schema
+[33m24bd5b3[m HEAD@{33}: commit: changed db schema
+[33ma130342[m HEAD@{34}: commit: changed db schema
+[33mc29206d[m HEAD@{35}: commit: changed db name to correct name
+[33mc7943e6[m HEAD@{36}: commit: rmoved sql service to use digitalocean db
+[33m34b888f[m HEAD@{37}: commit: changed Dockerfile and admin seeder
+[33m67d2775[m HEAD@{38}: commit: changed Dockerfile
+[33ma0c6a14[m HEAD@{39}: commit: changed Dockerfile
+[33m6accdb7[m HEAD@{40}: commit: changed Dockerfile
+[33md369346[m HEAD@{41}: commit: changed .yml
+[33m5ec90f2[m HEAD@{42}: commit: changed dockerfile position to root
+[33m1a66aaa[m HEAD@{43}: commit: added yml and dockerfile for digital ocean
+[33m20fc987[m HEAD@{44}: commit: added components and routes
+[33m1441369[m HEAD@{45}: commit (merge): Merge remote-tracking branch 'origin/master'
+[33m91121f6[m HEAD@{46}: commit: fiiiinally added working backend, not connected to frontend yet
+[33mb0490cc[m HEAD@{47}: reset: moving to b0490cc19669d1378a617cbe1c5dc76a8278c5e0
+[33md896ac5[m HEAD@{48}: commit: feat: added basic security jwt and login
+[33mc66dd75[m HEAD@{49}: commit: feat: added CORS config
+[33m6a28d91[m HEAD@{50}: commit: feat: added controllers with HTTP responses instead of object responses
+[33m48e652b[m HEAD@{51}: commit: feat: added models and ProductDAO
+[33m18626a7[m HEAD@{52}: commit: fixed: type + added CartItemModel
+[33m7bf5e68[m HEAD@{53}: commit: feat: added database models/tables
+[33mcf660b2[m HEAD@{54}: commit: refactor: refactored names from 'ingredient' to 'price', and changed the products model to match
+[33mb223893[m HEAD@{55}: commit: refactor: refactored names from 'recipe' to 'product'
+[33mb0490cc[m HEAD@{56}: commit: feat: added springboot backend with demo controller
+[33m5c6e99a[m HEAD@{57}: commit: feat: added springboot backend with demo controller
+[33m6eaea8c[m HEAD@{58}: commit: feat: added forms
+[33m50ccf11[m HEAD@{59}: commit: feat: added routing
+[33m8fec174[m HEAD@{60}: commit: feat: added shopping list service
+[33m0d58f71[m HEAD@{61}: commit: feat: added recipe service
+[33mf2966d0[m HEAD@{62}: commit: feat: added dropdown directive
+[33mcf42b43[m HEAD@{63}: commit: feat: can add item to shopping list
+[33m8393c75[m HEAD@{64}: commit: feat: added recipe details binded
+[33m5158070[m HEAD@{65}: commit: feat: added simple ngIf navigation
+[33mf9e5f94[m HEAD@{66}: commit: feat: Added Recipe and Ingredients
+[33m9ca3e3e[m HEAD@{67}: commit: added: added new components + layout
+[33m519be2d[m HEAD@{68}: commit: ReInit: removed old folders, made brand new angular project, added bootstrap3
+[33m02c0663[m HEAD@{69}: commit: ReInit: removed old folders, made brand new angular project, added bootstrap3
+[33m880df9a[m HEAD@{70}: commit (initial): Initial commit
