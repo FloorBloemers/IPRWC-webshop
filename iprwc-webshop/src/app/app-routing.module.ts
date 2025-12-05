@@ -25,7 +25,7 @@ const appRoutes: Routes = [
   { path: 'checkout' , component: CheckoutComponent},
   { path: 'customer-form' , component: CustomerFormComponent},
   { path: 'confirm-order' , component: ConfirmOrderComponent},
-  { path: 'account' , component: CportalComponent},
+  { path: 'my-account' , component: CportalComponent},
 
 ];
 

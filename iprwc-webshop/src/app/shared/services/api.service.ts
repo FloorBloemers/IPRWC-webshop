@@ -109,18 +109,12 @@ export class ApiService {
   }
 
   createOrder(order: Order){
-    if(order.customer.optionalRegisteredUser == null) {
-      return this.http.post(`${API_URL}/orders/no-account`, order, {
-        observe: 'response',
-      })
-    } else {
       let token = this.authService.getToken();
       const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
       return this.http.post(`${API_URL}/orders`, order, {
         headers: headers,
         observe: 'response',
       });
-    }
   }
 
   getOrders() {

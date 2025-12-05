@@ -1,1 +1,31 @@
-<p>confirm-order works!</p>
+<div class="container">
+  <h2>Finalize Your Order</h2>
+  <div class="card my-2">
+    <div class="card-body">
+      <h5 class="card-title">Customer Details</h5>
+      <p class="card-text">Name: {{customer.name}}</p>
+      <p class="card-text">Email: {{customer.email}}</p>
+    </div>
+  </div>
+
+  <div class="card my-2">
+    <div class="card-body">
+      <h5 class="card-title">Cart Items</h5>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" *ngFor="let item of cartItems">
+          {{item.name}} - €{{item.price}}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card my-2">
+    <div class="card-body">
+      <h5 class="card-title">Final Price</h5>
+      <p class="card-text">€{{finalPrice}}</p>
+    </div>
+  </div>
+
+  <button class="btn btn-success" (click)="placeOrder()">Place order</button>
+
+</div>

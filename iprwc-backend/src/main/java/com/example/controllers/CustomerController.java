@@ -46,6 +46,9 @@ public class CustomerController {
         String name = jwtService.extractUserId(jwt);
         Customer customer = customerService.getCustomerByName(name);
 
+        if (customer == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
 
         customer.setOptionalRegisteredUser(null);
         return ResponseEntity.ok(customer);

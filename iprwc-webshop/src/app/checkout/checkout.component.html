@@ -1,1 +1,14 @@
-<p>checkout works!</p>
+<div class="container my-4">
+  <h2>Your Cart</h2>
+  <div *ngIf="items.length; else emptyCart">
+    <ul class="list-group mb-3">
+      <li class="list-group-item" *ngFor="let item of items; let i = index">
+        {{ item.name }} - €{{ item.price }}
+      </li>
+    </ul>
+    <p>Total: €{{ total }}</p>
+  </div>
+  <ng-template #emptyCart>
+    <p>Your cart is empty.</p>
+  </ng-template>
+</div>

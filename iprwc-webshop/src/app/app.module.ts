@@ -9,7 +9,6 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {DropdownDirective} from "./shared/dropdown.directive";
 import {AppRoutingModule} from "./app-routing.module";
 import { CartComponent } from './cart/cart.component';
-import { CportalComponent } from './cportal/cportal.component';
 import { AportalComponent } from './aportal/aportal.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import {CustomerFormComponent} from "./customer-form/customer-form.component";
@@ -23,10 +22,6 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
   declarations: [
     AppComponent,
     DropdownDirective,
-    CportalComponent,
-    AportalComponent,
-    CheckoutComponent,
-    ConfirmOrderComponent
   ],
   imports: [
     BrowserModule,
@@ -38,10 +33,14 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     ProductComponent,
     HeaderComponent,
     CartComponent,
+    ConfirmOrderComponent,
+    CheckoutComponent,
     ProductsComponent,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    CustomerFormComponent
+    CustomerFormComponent,
+    AportalComponent,
+    CheckoutComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
