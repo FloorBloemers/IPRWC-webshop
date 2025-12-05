@@ -36,6 +36,7 @@ public class OrderController {
     public ResponseEntity<List<Order>> getLoggedInCustomerOrders(@RequestHeader("Authorization") String request) {
         String jwt = jwtService.getJwtFromToken(request);
         String userId = jwtService.extractUserId(jwt);
+        System.out.println("Extracted userId from JWT: " + userId);
         List<Order> orders = orderService.getOrdersByUserId(UUID.fromString(userId));
         return new ResponseEntity<>(orders, HttpStatus.OK);
     }
