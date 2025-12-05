@@ -38,31 +38,33 @@ export class ConfirmOrderComponent implements OnInit{
     this.customer = this.customerService.getCustomer();
     this.order = {
       customer: this.customer,
-      totalPrice: this.finalPrice
+      totalPrice: this.finalPrice,
+      status: "NEW"
     }
     // this.productOrder.status = "New";
   }
 
   placeOrder() {
-    if (!this.order) {
-      this.toastr.error('Order not ready', 'Error');
-      return;
-    }
-
-    this.apiService.createOrder(this.order).subscribe({
-      next: (response) => {
-        if (response.status === 201) {
-          this.toastr.success('Order created', 'Success');
-          this.cartService.clearCart();
-          this.router.navigate(['/home']);
-        } else {
-          this.toastr.error('An error occurred when creating order', 'Error');
-        }
-      },
-      error: (err) => {
-        this.toastr.error('Failed to create order', 'Error');
-        console.error(err);
+      console.log(this.order);
+      if (!this.order || !this.order.customer) {
+        this.toastr.error('Customer not loaded yet', 'Error');
+        return;
       }
-    });
-  }
+
+      this.apiService.createOrder(this.order).subscribe({
+        next: (response) => {
+          if (response.status === 201) {
+            this.toastr.success('Order created', 'Success');
+            this.cartService.clearCart();
+            this.router.navigate(['/home']);
+          } else {
+            this.toastr.error('An error occurred when creating order', 'Error');
+          }
+        },
+        error: (err) => {
+          this.toastr.error('Failed to create order', 'Error');
+          console.error(err);
+        }
+      });
+    }
 }

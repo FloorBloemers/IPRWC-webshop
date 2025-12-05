@@ -4,6 +4,9 @@ package com.example.controllers;
 import com.example.daos.userDAO;
 import com.example.dtos.AuthRequestDTO;
 import com.example.dtos.AuthResponseDTO;
+import com.example.models.Customer;
+import com.example.services.CustomerService;
+import com.example.models.User;
 import com.example.models.ApiResponse;
 import com.example.services.AuthService;
 import lombok.RequiredArgsConstructor;
@@ -30,7 +33,7 @@ public class AuthController {
 
     @PostMapping(value = "/register")
     public ApiResponse<AuthResponseDTO> register(@RequestBody AuthRequestDTO registerDTO) {
-        Optional<String> tokenResponse = authService.register(registerDTO.getUsername(), registerDTO.getPassword());
+        Optional<String> tokenResponse = authenticationService.register(registerDTO.getUsername(), registerDTO.getPassword());
 
         if (tokenResponse.isEmpty()) {
             return new ApiResponse<>("User already exists", HttpStatus.BAD_REQUEST);
