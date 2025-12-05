@@ -1,29 +1,28 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Product} from "../models/product.model";
-import {HeaderComponent} from "../header/header.component";
 import {ApiService} from "../shared/services/api.service";
 import {CartService} from "../cart.service";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product',
   standalone: true,
   imports: [
-    HeaderComponent
   ],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'
 })
 export class ProductComponent implements OnInit {
-
-  @Input() id?: number;
-  product!: Product;
+  id!: number;
+  product?: Product;
   constructor(private apiService: ApiService,
-              private cartService: CartService) {}
+              private cartService: CartService, private route: ActivatedRoute) {}
 
 
   ngOnInit(): void {
+    this.id = Number(this.route.snapshot.paramMap.get('id'));
     this.apiService.getProducts().subscribe(data => {
-      this.product = data.find((product: Product) => product.id == this.id);
+      this.product = data.find(p => p.id === this.id);
     });
   }
 
