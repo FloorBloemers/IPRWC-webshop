@@ -10,6 +10,7 @@ export class AuthService {
   signout() {
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('username');
+    this.usernameSubject = null;
   }
 
   parseToken = (token: string) => {
