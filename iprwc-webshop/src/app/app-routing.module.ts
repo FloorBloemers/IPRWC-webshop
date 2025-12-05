@@ -2,8 +2,7 @@ import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
 import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
-import {productsComponent} from "./products/products.component";
-import {ShoppingListComponent} from "./shopping-list/shopping-list.component";
+import {ProductsComponent} from "./products/products.component";
 import {HomeComponent} from "./home/home.component";
 import {ProductComponent} from "./product/product.component";
 import {CartComponent} from "./cart/cart.component";
@@ -18,7 +17,7 @@ const appRoutes: Routes = [
   { path: '' , redirectTo: '/home', pathMatch: 'full'},
   { path: 'login' , component: LoginComponent},
   { path: 'register' , component: RegisterComponent},
-  { path: 'products' , component: productsComponent},
+  { path: 'products' , component: ProductsComponent},
   { path: 'home' , component: HomeComponent},
   { path: 'products/:id' , component: ProductComponent},
   { path: 'cart' , component: CartComponent},

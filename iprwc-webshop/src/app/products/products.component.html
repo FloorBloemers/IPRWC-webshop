@@ -1,8 +1,31 @@
-<div class="row">
-  <div class="col-md-5">
-    <app-product-list></app-product-list>
+<div class="container mt-3">
+  <div class="row">
+    <!-- Product Cards -->
+    <div *ngFor="let product of products" class="col-md-4 mb-3">
+      <div class="card">
+        <img [src]="product.imageUri" class="card-img-top" [alt]="product.name">
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text">{{ product.description }}</p>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Prijs: €{{ product.price }}</li>
+            <li class="list-group-item">Voorraad: {{ product.stock }}</li>
+            <li class="list-group-item">Categorie: {{ product.category.name }}</li>
+            <li class="list-group-item">Categoriebeschrijving: {{ product.category.description }}</li>
+          </ul>
+          <div class="card-body">
+            <a routerLink="/products/{{product.id}}" class="btn btn-primary" >Bekijk product</a>
+            <a class="btn btn-primary" (click)="addToCart(product)">Voeg toe aan winkelmandje</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="col-md-7">
-    <router-outlet></router-outlet>
+  <div class="row mt-4">
+    <div class="col-12">
+      <!-- Winkelmandje Component of Logica -->
+      <!-- Je kan hier een aparte component voor je winkelmandje integreren -->
+      <!--      <app-cart></app-cart>-->
+    </div>
   </div>
 </div>

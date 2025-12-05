@@ -39,15 +39,15 @@ public class ProductSeeder implements CommandLineRunner {
         Category MonsterCategory = categoryService.getCategoryByName("Monster").orElse(null);
 
         List<Product> blikjes = Arrays.asList(
-                new Product("Red Bull Bloesem", 2.00, 50, "Red Bull", "https://ibb.co/nN0fZy8t", RedBullCategory),
-                        new Product("Red Bull Watermelon", 2.00, 50, "Red Bull", "https://ibb.co/TBgqTdhv", RedBullCategory),
-                        new Product("Red Bull Tropical", 2.00, 50, "Red Bull", "https://ibb.co/whWYXj7D", RedBullCategory),
-                        new Product("Red Bull Apricot", 2.00, 50, "Red Bull", "https://ibb.co/271LFRJP", RedBullCategory),
-                        new Product("Red Bull Cactus", 2.00, 50, "Red Bull", "https://ibb.co/h1ZV85ym", RedBullCategory),
-                        new Product("Red Bull Juneberry", 2.00, 50, "Red Bull", "https://ibb.co/7JHjDk0K", RedBullCategory),
-                        new Product("Monster Zero", 3.00, 100, "Monster", "https://ibb.co/Wv7qrcmK", MonsterCategory),
-                        new Product("Monster Mango", 3.00, 100, "Monster", "https://ibb.co/BH9XG3wW", MonsterCategory),
-                        new Product("Monster Gold", 3.00, 100, "Monster", "https://ibb.co/Q7XsJrm8", MonsterCategory)
+                new Product("Red Bull Bloesem", 2.00, 50, "Red Bull", "https://i.ibb.co/KpG7RgzS/redbull-bloesem.jpg", RedBullCategory),
+                        new Product("Red Bull Watermelon", 2.00, 50, "Red Bull", "https://ibb.co/TBgqTdhv/redbull-watermelon.jpg", RedBullCategory),
+                        new Product("Red Bull Tropical", 2.00, 50, "Red Bull", "https://ibb.co/whWYXj7D/redbull-tropical.jpg", RedBullCategory),
+                        new Product("Red Bull Apricot", 2.00, 50, "Red Bull", "https://ibb.co/271LFRJP/redbull-apricot.jpg", RedBullCategory),
+                        new Product("Red Bull Cactus", 2.00, 50, "Red Bull", "https://ibb.co/h1ZV85ym/redbull-cactus.jpg", RedBullCategory),
+                        new Product("Red Bull Juneberry", 2.00, 50, "Red Bull", "https://ibb.co/7JHjDk0K/redbull-juneberry.jpg", RedBullCategory),
+                        new Product("Monster Zero", 3.00, 100, "Monster", "https://ibb.co/Wv7qrcmK/monster-zero.jpg", MonsterCategory),
+                        new Product("Monster Mango", 3.00, 100, "Monster", "https://ibb.co/BH9XG3wW/monster-mango.jpg", MonsterCategory),
+                        new Product("Monster Gold", 3.00, 100, "Monster", "https://ibb.co/Q7XsJrm8/monster-gold.jpg", MonsterCategory)
         );
 
         for (Product product : blikjes) {
