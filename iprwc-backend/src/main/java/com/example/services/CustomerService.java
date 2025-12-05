@@ -36,8 +36,8 @@ public class CustomerService {
                 .orElseThrow(() -> new EntityNotFoundException("Customer not found with user ID: " + userId));
     }
 
-    public Customer getCustomerByUsername(String username) {
-        return customerRepository.findByName(username).orElse(null);
+    public Customer getCustomerByName(String name) {
+        return customerRepository.findByName(name).orElse(null);
     }
 
     public Customer createCustomer(Customer customer) {
