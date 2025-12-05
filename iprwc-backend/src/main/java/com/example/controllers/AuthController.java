@@ -33,13 +33,13 @@ public class AuthController {
 
     @PostMapping(value = "/register")
     public ApiResponse<AuthResponseDTO> register(@RequestBody AuthRequestDTO registerDTO) {
-        Optional<String> tokenResponse = authService.register(registerDTO.getUsername(), registerDTO.getPassword());
+        Optional<String> tokenResponse = authenticationService.register(registerDTO.getUsername(), registerDTO.getPassword());
 
         if (tokenResponse.isEmpty()) {
             return new ApiResponse<>("User already exists", HttpStatus.BAD_REQUEST);
         }
 
-         String token = tokenResponse.get();
+        String token = tokenResponse.get();
 
         return new ApiResponse<>(new AuthResponseDTO(token));
     }
