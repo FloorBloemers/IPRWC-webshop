@@ -8,27 +8,24 @@ import { ProductsComponent } from './products/products.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {DropdownDirective} from "./shared/dropdown.directive";
 import {AppRoutingModule} from "./app-routing.module";
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 import { CartComponent } from './cart/cart.component';
 import { CportalComponent } from './cportal/cportal.component';
 import { AportalComponent } from './aportal/aportal.component';
 import { CheckoutComponent } from './checkout/checkout.component';
-import { CustomerFormComponent } from './customer-form/customer-form.component';
+import {CustomerFormComponent} from "./customer-form/customer-form.component";
 import { ConfirmOrderComponent } from './confirm-order/confirm-order.component';
 import { HomeComponent } from './home/home.component';
 import { ProductComponent } from './product/product.component';
+import {ToastrModule} from "ngx-toastr";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
     AppComponent,
     DropdownDirective,
-    LoginComponent,
-    RegisterComponent,
     CportalComponent,
     AportalComponent,
     CheckoutComponent,
-    CustomerFormComponent,
     ConfirmOrderComponent
   ],
   imports: [
@@ -41,7 +38,10 @@ import { ProductComponent } from './product/product.component';
     ProductComponent,
     HeaderComponent,
     CartComponent,
-    ProductsComponent
+    ProductsComponent,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
+    CustomerFormComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

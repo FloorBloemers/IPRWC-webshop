@@ -45,6 +45,12 @@ public class CustomerController {
         String jwt = jwtService.getJwtFromToken(request);
         String userId = jwtService.extractUserId(jwt);
         Customer customer = customerService.getCustomerByUserId(UUID.fromString(userId));
+
+        if (customer == null) {
+            // return 404 Not Found instead of 500
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+
         customer.setOptionalRegisteredUser(null);
         return ResponseEntity.ok(customer);
     }

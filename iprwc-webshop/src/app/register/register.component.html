@@ -1,1 +1,30 @@
-<p>register works!</p>
+
+<div class="main-container">
+  <div class="register-container">
+    <h1>Login</h1>
+    <form class="register-form" (ngSubmit)="submitRegister()">
+      <label for="username">Username</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        placeholder="username"
+        [(ngModel)]="username"
+        required
+      />
+
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        required
+        [(ngModel)]="password"
+        placeholder="password"
+      />
+
+      <button type="submit">Register</button>
+    </form>
+  </div>
+  <div class="image-container"></div>
+</div>
