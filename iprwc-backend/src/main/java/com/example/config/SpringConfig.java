@@ -81,9 +81,21 @@ public class SpringConfig {
                 .csrf(AbstractHttpConfigurer::disable)   // disable CSRF
                 .cors(Customizer.withDefaults())         // keep CORS enabled
                 .authorizeHttpRequests(auth -> auth
-                        .anyRequest().permitAll()        // allow ALL requests
+                        .requestMatchers("/api/v1/auth/**").permitAll() // allow login/register
+                        .anyRequest().authenticated()                   // everything else requires JWT
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .build();                                // no authenticationProvider or JWT filter
+    }
+
+    @Bean
+    public JwtAuthenticationConverter jwtAuthenticationConverter() {
+        JwtGrantedAuthoritiesConverter converter = new JwtGrantedAuthoritiesConverter();
+        converter.setAuthorityPrefix("");              // no "ROLE_" prefix
+        converter.setAuthoritiesClaimName("role");     // use "role" claim from JWT
+
+        JwtAuthenticationConverter jwtConverter = new JwtAuthenticationConverter();
+        jwtConverter.setJwtGrantedAuthoritiesConverter(converter);
+        return jwtConverter;
     }
 }
