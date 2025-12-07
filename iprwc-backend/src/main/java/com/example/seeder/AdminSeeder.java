@@ -36,5 +36,15 @@ public class AdminSeeder {
             } catch (Exception e) {
                 logger.warn("couldn't create admin account: " + e.getMessage());
             }
+        var admin2 = User.builder()
+                .username("adminfloor")
+                .password(passwordEncoder.encode("admin"))
+                .role(Role.ADMIN)
+                .build();
+        try {
+            this.userDAO.save(admin2);
+        } catch (Exception e) {
+            logger.warn("couldn't create admin account: " + e.getMessage());
+        }
     }
 }

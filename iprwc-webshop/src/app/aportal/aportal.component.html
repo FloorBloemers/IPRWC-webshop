@@ -1,1 +1,60 @@
-<p>aportal works!</p>
+<div class="container">
+  <h2>Product Management</h2>
+  <h3>Adding products</h3>
+  <form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" id="name" class="form-control" name="name" ngModel required>
+    </div>
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input type="number" id="price" class="form-control" name="price" ngModel required>
+    </div>
+    <div class="form-group">
+      <label for="stock">Stock</label>
+      <input type="number" id="stock" class="form-control" name="stock" ngModel required>
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea id="description" class="form-control" name="description" ngModel></textarea>
+    </div>
+    <div class="form-group">
+      <label for="imageUri">Image URI</label>
+      <input type="text" id="imageUri" class="form-control" name="imageUri" ngModel>
+    </div>
+    <div class="form-group">
+      <label for="category">Category</label>
+      <select id="category" class="form-control" name="category" ngModel required>
+        <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!productForm.valid">Submit</button>
+  </form>
+  <h3>Products</h3>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Stock</th>
+      <th>Description</th>
+      <th>Image URI</th>
+      <th>Category</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{product.name}}</td>
+      <td>{{product.price}}</td>
+      <td>{{product.stock}}</td>
+      <td>{{product.description}}</td>
+      <td>{{product.imageUri}}</td>
+      <td>{{product.category.name}}</td>
+      <td>
+        <button class="btn btn-danger" (click)="deleteProduct(product)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

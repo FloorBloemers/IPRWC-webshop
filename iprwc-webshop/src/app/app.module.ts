@@ -3,13 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from "@angular/common/http";
 
 import { AppComponent } from './app.component';
+import { AportalComponent} from "./aportal/aportal.component";
 import { HeaderComponent } from './header/header.component';
 import { ProductsComponent } from './products/products.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {DropdownDirective} from "./shared/dropdown.directive";
 import {AppRoutingModule} from "./app-routing.module";
 import { CartComponent } from './cart/cart.component';
-import { AportalComponent } from './aportal/aportal.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import {CustomerFormComponent} from "./customer-form/customer-form.component";
 import { ConfirmOrderComponent } from './confirm-order/confirm-order.component';
