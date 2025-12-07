@@ -84,22 +84,20 @@ public class SpringConfig {
                 .csrf(AbstractHttpConfigurer::disable)   // disable CSRF
                 .cors(Customizer.withDefaults())         // keep CORS enabled
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/v1/auth/**").permitAll() // allow login/register
-                        .anyRequest().authenticated()                   // everything else requires JWT
+                        .anyRequest().permitAll()            // allow ALL requests
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .oauth2ResourceServer(oauth2 -> oauth2.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter())))
                 .build();
     }
 
-    @Bean
-    public JwtAuthenticationConverter jwtAuthenticationConverter() {
-        JwtGrantedAuthoritiesConverter converter = new JwtGrantedAuthoritiesConverter();
-        converter.setAuthorityPrefix("");              // no "ROLE_" prefix
-        converter.setAuthoritiesClaimName("role");     // use "role" claim from JWT
-
-        JwtAuthenticationConverter jwtConverter = new JwtAuthenticationConverter();
-        jwtConverter.setJwtGrantedAuthoritiesConverter(converter);
-        return jwtConverter;
-    }
+//    @Bean
+//    public JwtAuthenticationConverter jwtAuthenticationConverter() {
+//        JwtGrantedAuthoritiesConverter converter = new JwtGrantedAuthoritiesConverter();
+//        converter.setAuthorityPrefix("");              // no "ROLE_" prefix
+//        converter.setAuthoritiesClaimName("role");     // use "role" claim from JWT
+//
+//        JwtAuthenticationConverter jwtConverter = new JwtAuthenticationConverter();
+//        jwtConverter.setJwtGrantedAuthoritiesConverter(converter);
+//        return jwtConverter;
+//    }
 }
