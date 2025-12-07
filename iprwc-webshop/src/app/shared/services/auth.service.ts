@@ -33,11 +33,11 @@ export class AuthService {
 
   public isAdmin(): boolean {
     const token = sessionStorage.getItem('token');
+    console.log(this.parseToken(token));
     if (!token) return false;
 
     const claims = this.parseToken(token);
     return claims.role == 'ADMIN';
-
   }
 
   public setToken(token: string): void {
