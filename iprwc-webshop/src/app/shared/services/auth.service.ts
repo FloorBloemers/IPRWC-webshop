@@ -14,11 +14,11 @@ export class AuthService {
   }
 
   parseToken = (token: string) => {
-    console.log('JWT claims:', this.parseToken(token));
-
     const base64Url = token.split('.')[1];
     const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
     const jsonPayload = decodeURIComponent(atob(base64));
+
+    console.log('JWT claims:', jsonPayload);
 
     return JSON.parse(jsonPayload);
   };

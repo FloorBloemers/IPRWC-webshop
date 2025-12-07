@@ -42,7 +42,6 @@ public class CustomerController {
 
     @GetMapping("/logged-in")
     public ResponseEntity<Customer> getLoggedInCustomer(@RequestHeader("Authorization") String request) {
-        console.log(request);
         String jwt = jwtService.getJwtFromToken(request);
         String name = jwtService.extractUserId(jwt);
         Customer customer = customerService.getCustomerByName(name);
