@@ -1,6 +1,8 @@
 package com.example.config;
 
 import com.example.config.JwtAuthenticationFilter;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
+import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 import com.example.daos.userDAO;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -86,7 +88,8 @@ public class SpringConfig {
                         .anyRequest().authenticated()                   // everything else requires JWT
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .build();                                // no authenticationProvider or JWT filter
+                .oauth2ResourceServer(oauth2 -> oauth2.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter())))
+                .build();
     }
 
     @Bean
