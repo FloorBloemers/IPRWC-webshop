@@ -48,7 +48,7 @@ public class OrderController {
     public ResponseEntity<Order> createOrder(@RequestBody Order order, @RequestHeader("Authorization") String request) {
         String jwt = jwtService.getJwtFromToken(request);
         String userId = jwtService.extractUserId(jwt);
-        order.setUser(UserService.findById(UUID.fromString(userId)));
+        order.setUser(userDAO.findById(UUID.fromString(userId));
         Order createdOrder = orderService.createOrder(order);
         return new ResponseEntity<>(createdOrder, HttpStatus.CREATED);
     }

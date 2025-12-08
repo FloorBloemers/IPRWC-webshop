@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping(value = "/api/v1/auth")
