@@ -6,6 +6,7 @@ import com.example.models.User;
 import com.example.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -16,7 +17,7 @@ public class AdminSeeder {
 
     private final userDAO userDAO;
     private final PasswordEncoder passwordEncoder;
-    private static final Logger log = LoggerFactory.getLogger(AdminSeeder.class);
+    private static final Logger logger = LoggerFactory.getLogger(AdminSeeder.class);
 
 
     @Value("${super-admin.name}")
