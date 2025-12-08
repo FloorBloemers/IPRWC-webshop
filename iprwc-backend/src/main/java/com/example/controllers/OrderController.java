@@ -4,7 +4,6 @@ import com.example.daos.userDAO;
 import com.example.exception.OrderNotFoundException;
 import com.example.models.Order;
 import com.example.models.User;
-import com.example.services.UserService;
 import com.example.services.JwtService;
 import com.example.services.OrderService;
 import com.example.repositories.OrderRepository;
