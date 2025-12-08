@@ -1,7 +1,7 @@
 package com.example.services;
 
 import com.example.exception.OrderNotFoundException;
-import com.example.models.Customer;
+import com.example.models.User;
 import com.example.models.Order;
 import com.example.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +16,12 @@ import java.util.UUID;
 public class OrderService {
 
     private final OrderRepository orderRepository;
-    private final CustomerService customerService;
+    private final UserService userService;
 
     @Autowired
-    public OrderService(OrderRepository orderRepository, CustomerService customerService) {
+    public OrderService(OrderRepository orderRepository, UserService userService) {
         this.orderRepository = orderRepository;
-        this.customerService = customerService;
+        this.userService = userService;
     }
 
     public List<Order> getAllOrders() {
@@ -33,26 +33,14 @@ public class OrderService {
     }
 
     public List<Order> getOrdersByUserId(UUID userId) {
-        Customer customerFromDatabase = customerService.getCustomerByUserId(userId);
-        return orderRepository.findByCustomer(customerFromDatabase);
+        User userFromDatabase = userService.getUserById(userId);
+        return orderRepository.findByUser(userFromDatabase);
     }
 
     public Order createOrder(Order order) {
         order.setCurrentDateAndNewOrder();
         return orderRepository.save(order);
     }
-
-    public Order createOrderWithoutAccount(Order order) {
-        Customer customerFromDatabase = customerService.getCustomerById(order.getCustomer().getId());
-        if (customerFromDatabase.getOptionalRegisteredUser() == null) {
-            order.setCustomer(customerFromDatabase);
-        } else {
-            throw new IllegalArgumentException("Customer with ID: " + order.getCustomer().getId() + " already has an account");
-        }
-        order.setCurrentDateAndNewOrder();
-        return orderRepository.save(order);
-    }
-
 
     public Order updateOrder(Long orderId, Order updatedOrder) throws OrderNotFoundException {
         if (orderRepository.existsById(orderId)) {

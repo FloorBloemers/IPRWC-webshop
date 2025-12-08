@@ -14,8 +14,6 @@ import java.util.UUID;
 public class UserMapper {
 
     public User toEntity(UserCreateDTO userCreateDTO) {
-//        Rank rank = rankDao.findById(UUID.fromString(userCreateDTO.getRank()));
-//        System.out.println(rank.getRankName());
         Role role = Role.valueOf(userCreateDTO.getRole());
 
         return User.builder()
