@@ -55,8 +55,21 @@ public class SpringConfig {
                                 "/api/v1/auth/**",           // login/register
                                 "/api/v1/categories/**",        // public categories
                                 "/api/v1/products/**",
-                                "/api/v1/user/**"
-                        ).permitAll()
+                                "/api/v1/user/**",
+                                "/api/v1/home",
+                                "/",                    // root path
+                                "/index.html",
+                                "/favicon.ico",
+                                "/**/*.css",
+                                "/**/*.js",
+                                "/**/*.png",
+                                "/**/*.jpg",
+                                "/**/*.svg",
+                                "/**/*.woff2",
+                                "/**/*.ttf",
+                                "/api/v1/auth/**",      // login/register
+                                "/api/v1/categories",   // public categories
+                                "/api/v1/home"                        ).permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
