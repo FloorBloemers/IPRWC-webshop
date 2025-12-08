@@ -52,10 +52,9 @@ public class SpringConfig {
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(request -> request
                         .requestMatchers(
-                                "/",                // root
-                                "/index.html",      // main Angular entry
-                                "/static/**",       // Spring Boot static resources
-                                "/assets/**",       // Angular assets
+                                "/", "/index.html", "/favicon.ico",
+                                "/**/*.js", "/**/*.css", "/**/*.ico", "/**/*.png", "/**/*.jpg", "/**/*.svg",
+                                "/assets/**", "/static/**",
                                 "/api/v1/auth/**",
                                 "/api/v1/categories",
                                 "/api/v1/home",
