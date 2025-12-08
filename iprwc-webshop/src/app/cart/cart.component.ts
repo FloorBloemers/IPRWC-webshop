@@ -5,11 +5,12 @@ import {CartService} from "../cart.service";
 import {CommonModule} from "@angular/common";
 import {HttpClientModule} from "@angular/common/http";
 import {RouterLink} from "@angular/router";
+import {HeaderComponent} from "../header/header.component";
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, RouterLink],
+    imports: [CommonModule, HttpClientModule, RouterLink, HeaderComponent],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css'
 })

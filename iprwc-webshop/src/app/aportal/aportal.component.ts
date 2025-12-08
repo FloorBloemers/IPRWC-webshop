@@ -6,12 +6,14 @@ import {CommonModule} from "@angular/common";
 import {HttpClientModule} from "@angular/common/http";
 import {Product} from "../models/product.model";
 import {ToastrService} from "ngx-toastr";
+import {HeaderComponent} from "../header/header.component";
+import {AuthService} from "../shared/services/auth.service";
 
 @Component({
   selector: 'app-aportal',
   standalone: true,
   imports: [
-    CommonModule, HttpClientModule, FormsModule
+    CommonModule, HttpClientModule, FormsModule, HeaderComponent
   ],
   templateUrl: './aportal.component.html',
   styleUrl: './aportal.component.css'
@@ -21,8 +23,11 @@ export class AportalComponent implements OnInit {
   products: Product[] = [];
   product!: Product;
 
+  username: string | null = '';
+  isAdmin: boolean = false;
+
   constructor(private apiService: ApiService,
-              private toastr: ToastrService) {}
+              private toastr: ToastrService, private authService: AuthService) {}
 
   onSubmit(productForm: NgForm) {
     this.product = productForm.value;
@@ -57,6 +62,12 @@ export class AportalComponent implements OnInit {
   ngOnInit() {
     this.fetchProducts();
     this.fetchCategories();
+
+    this.username = this.authService.getUsername();
+    this.isAdmin = this.authService.isAdmin();
+    this.authService.getUsernameObservable().subscribe(name => {
+      this.username = name;
+    });
   }
 
   fetchProducts() {
