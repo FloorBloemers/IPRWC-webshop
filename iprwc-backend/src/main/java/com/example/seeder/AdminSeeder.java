@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @RequiredArgsConstructor
 @Component
+@Slf4j
 public class AdminSeeder {
     private final userDAO userDAO;
     private final PasswordEncoder passwordEncoder;
