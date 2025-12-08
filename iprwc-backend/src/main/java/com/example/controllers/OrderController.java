@@ -47,11 +47,23 @@ public class OrderController {
     }
 
     @PostMapping
-    public ResponseEntity<Order> createOrder(@RequestBody Order order, @RequestHeader("Authorization") String request) {
-        String jwt = jwtService.getJwtFromToken(request);
-        String userId = jwtService.extractUserId(jwt);
-        order.setUser(userDao.findById(UUID.fromString(userId)))
-            .orElseThrow(() -> new UserNotFoundException("User not found with id: " + userId));
+    public ResponseEntity<Order> createOrder(@RequestBody Order order,
+                                             @RequestHeader("Authorization") String authHeader) {
+        // Strip "Bearer " prefix
+        String token = jwtService.getJwtFromToken(authHeader);
+
+        // Extract userId from JWT subject
+        String userIdString = jwtService.extractUserId(token);
+        UUID userId = UUID.fromString(userIdString);
+
+        // Look up user in DB
+        User user = userDao.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException("User not found with id: " + userId));
+
+        // Attach user to order
+        order.setUser(user);
+
+        // Save order
         Order createdOrder = orderService.createOrder(order);
         return new ResponseEntity<>(createdOrder, HttpStatus.CREATED);
     }
