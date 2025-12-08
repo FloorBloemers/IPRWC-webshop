@@ -45,27 +45,42 @@ public class SpringConfig {
         return new BCryptPasswordEncoder();
     }
 
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//        return http
+//                .csrf(AbstractHttpConfigurer::disable)
+//                .cors(Customizer.withDefaults())
+//                .authorizeHttpRequests(request -> request
+//                        .requestMatchers(
+//                                "/", "/index.html", "/favicon.ico",
+//                                "/**/*.js", "/**/*.css", "/**/*.ico", "/**/*.png", "/**/*.jpg", "/**/*.svg",
+//                                "/assets/**", "/static/**",
+//                                "/api/v1/auth/**",
+//                                "/api/v1/categories",
+//                                "/api/v1/home",
+//                                "/api/v1/",
+//                                "/api/v1/products/**"
+//                        ).permitAll()
+//                        .anyRequest().authenticated()
+//                )
+//                .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+//                .authenticationProvider(authenticationProvider())
+//                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+//                .build();
+//    }
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers(
-                                "/", "/index.html", "/favicon.ico",
-                                "/**/*.js", "/**/*.css", "/**/*.ico", "/**/*.png", "/**/*.jpg", "/**/*.svg",
-                                "/assets/**", "/static/**",
-                                "/api/v1/auth/**",
-                                "/api/v1/categories",
-                                "/api/v1/home",
-                                "/api/v1/",
-                                "/api/v1/products/**"
-                        ).permitAll()
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll()
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
+
 }
