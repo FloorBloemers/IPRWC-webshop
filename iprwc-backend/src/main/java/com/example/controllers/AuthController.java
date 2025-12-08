@@ -29,7 +29,7 @@ import java.util.UUID;
 public class AuthController {
     private final AuthService authService;
     private final JwtService jwtService;
-    private final userDao userDao;
+    private final userDAO userDao;
 
     @PostMapping(value = "/login")
     public ApiResponse<AuthResponseDTO> login(@RequestBody AuthRequestDTO loginDTO) {
