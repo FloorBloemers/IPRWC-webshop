@@ -1,4 +1,4 @@
-# Stage 1: Build Angular
+# Stage 1: Build Angular.
 FROM node:18 AS frontend-build
 WORKDIR /app
 COPY iprwc-webshop/ .
