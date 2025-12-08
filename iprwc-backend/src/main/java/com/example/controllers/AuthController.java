@@ -52,7 +52,8 @@ public class AuthController {
     }
 
     @GetMapping("/logged-in")
-    public ResponseEntity<User> getLoggedInUser(@RequestHeader("Authorization") String authHeader) {
+    public ResponseEntity<User> getLoggedInUser(@RequestHeader("Authorization") String authHeader)
+        throws UserNotFoundException {
         // Strip "Bearer " prefix
         String token = jwtService.getJwtFromToken(authHeader);
 

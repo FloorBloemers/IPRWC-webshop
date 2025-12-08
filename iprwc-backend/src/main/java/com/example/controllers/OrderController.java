@@ -48,7 +48,8 @@ public class OrderController {
 
     @PostMapping
     public ResponseEntity<Order> createOrder(@RequestBody Order order,
-                                             @RequestHeader("Authorization") String authHeader) {
+                                             @RequestHeader("Authorization") String authHeader)
+            throws UserNotFoundException {
         // Strip "Bearer " prefix
         String token = jwtService.getJwtFromToken(authHeader);
 
