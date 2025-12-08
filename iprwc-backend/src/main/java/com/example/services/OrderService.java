@@ -32,7 +32,7 @@ public class OrderService {
         return orderRepository.findById(orderId);
     }
 
-    public List<Order> getOrdersByUserId(UUID userId) {
+    public List<Order> getOrdersByUserId(UUID userId) throws OrderNotFoundException {
         User userFromDatabase = userDAO.findById(userId)
                 .orElseThrow(() -> new OrderNotFoundException("User not found with ID: " + userId));
         return orderRepository.findByUser(userFromDatabase);
