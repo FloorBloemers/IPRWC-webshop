@@ -11,7 +11,7 @@ import org.springframework.core.annotation.Order;
 @RequiredArgsConstructor
 public class DatabaseSeeder {
     private final AdminSeeder adminSeeder;
-    private final Logger logger;
+    private static final Logger logger = LoggerFactory.getLogger(DatabaseSeeder.class);
 
     private boolean alreadySeeded = false;
 
@@ -22,8 +22,6 @@ public class DatabaseSeeder {
         }
 
         logger.info("Starting database seed.");
-
-        private static final Logger logger = LoggerFactory.getLogger(DatabaseSeeder.class);
 
         this.adminSeeder.seed();
 
