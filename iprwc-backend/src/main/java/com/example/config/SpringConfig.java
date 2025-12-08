@@ -52,8 +52,12 @@ public class SpringConfig {
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(request -> request
                         .requestMatchers(
-                                "/api/v1/auth/**",           // login/register
-                                "/api/v1/categories",        // public categories
+                                "/",                // root
+                                "/index.html",      // main Angular entry
+                                "/static/**",       // Spring Boot static resources
+                                "/assets/**",       // Angular assets
+                                "/api/v1/auth/**",
+                                "/api/v1/categories",
                                 "/api/v1/home",
                                 "/api/v1/",
                                 "/api/v1/products/**"
