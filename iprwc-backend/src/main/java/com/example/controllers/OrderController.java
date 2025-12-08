@@ -50,8 +50,8 @@ public class OrderController {
     public ResponseEntity<Order> createOrder(@RequestBody Order order, @RequestHeader("Authorization") String request) {
         String jwt = jwtService.getJwtFromToken(request);
         String userId = jwtService.extractUserId(jwt);
-        order.setUser(userDao.findById(UUID.fromString(userId)));
-        .orElseThrow(() -> new UserNotFoundException("User not found with id: " + userId));
+        order.setUser(userDao.findById(UUID.fromString(userId)))
+            .orElseThrow(() -> new UserNotFoundException("User not found with id: " + userId));
         Order createdOrder = orderService.createOrder(order);
         return new ResponseEntity<>(createdOrder, HttpStatus.CREATED);
     }
