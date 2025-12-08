@@ -12,12 +12,11 @@ import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
 @Component
-@Slf4j
 public class AdminSeeder {
 
     private final userDAO userDAO;
     private final PasswordEncoder passwordEncoder;
-    private final UserRepository userRepository;
+    private final Logger logger;
 
     @Value("${super-admin.name}")
     private String adminName;
@@ -34,7 +33,7 @@ public class AdminSeeder {
         try {
             this.userDAO.save(admin);
         } catch (Exception e) {
-            log.warn("Couldn't create admin account: {}", e.getMessage());
+            logger.warn("Couldn't create admin account: {}", e.getMessage());
         }
 
         var admin2 = User.builder()
@@ -45,7 +44,7 @@ public class AdminSeeder {
         try {
             this.userDAO.save(admin2);
         } catch (Exception e) {
-            log.warn("Couldn't create admin account: {}", e.getMessage());
+            logger.warn("Couldn't create admin account: {}", e.getMessage());
         }
     }
 }
