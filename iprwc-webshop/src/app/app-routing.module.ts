@@ -9,7 +9,6 @@ import {CartComponent} from "./cart/cart.component";
 import {AportalComponent} from "./aportal/aportal.component";
 import {CportalComponent} from "./cportal/cportal.component";
 import {CheckoutComponent} from "./checkout/checkout.component";
-import {CustomerFormComponent} from "./customer-form/customer-form.component";
 import {ConfirmOrderComponent} from "./confirm-order/confirm-order.component";
 
 
@@ -23,7 +22,6 @@ const appRoutes: Routes = [
   { path: 'cart' , component: CartComponent},
   { path: 'admin' , component: AportalComponent},
   { path: 'checkout' , component: CheckoutComponent},
-  { path: 'customer-form' , component: CustomerFormComponent},
   { path: 'confirm-order' , component: ConfirmOrderComponent},
   { path: 'my-account' , component: CportalComponent},
 

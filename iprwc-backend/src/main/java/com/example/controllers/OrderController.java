@@ -56,12 +56,6 @@ public class OrderController {
         return new ResponseEntity<>(createdOrder, HttpStatus.CREATED);
     }
 
-    @PostMapping("/no-account")
-    public ResponseEntity<Order> createOrderWithoutAccount(@RequestBody Order order) {
-        Order createdOrder = orderService.createOrderWithoutAccount(order);
-        return new ResponseEntity<>(createdOrder, HttpStatus.CREATED);
-    }
-
     @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping("/{orderId}")
     public ResponseEntity<Order> updateOrder(@PathVariable Long orderId, @RequestBody Order updatedOrder) {

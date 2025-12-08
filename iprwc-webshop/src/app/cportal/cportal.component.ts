@@ -3,8 +3,8 @@ import {Order} from "../models/order.model";
 import {ApiService} from "../shared/services/api.service";
 import {ToastrService} from "ngx-toastr";
 import {CommonModule} from "@angular/common";
-import {Customer} from "../models/customer.model";
-import {CustomerService} from "../customer.service";
+import {User} from "../models/user.model";
+import {UserService} from "../user.service";
 
 @Component({
   selector: 'app-cportal',
@@ -18,19 +18,19 @@ import {CustomerService} from "../customer.service";
 export class CportalComponent implements OnInit{
 
   orders: Order[] = [];
-  customer: Customer = {} as Customer;
+  user: User = {} as User;
 
   constructor(private apiService: ApiService,
-              private customerService: CustomerService,
+              private userService: UserService,
               private toastr: ToastrService) {
   }
 
   ngOnInit() {
     this.parseOrders();
 
-    this.customerService.getCustomerFromApi().subscribe({
-      next: (customer) => {
-        this.customer = customer;
+    this.userService.getUserFromApi().subscribe({
+      next: (user) => {
+        this.user = user;
       },
       error: (err) => {
         this.toastr.error('Failed to load customer', 'Error');

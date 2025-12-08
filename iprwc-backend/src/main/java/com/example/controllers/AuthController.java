@@ -20,6 +20,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class AuthController {
     private final AuthService authService;
+    private final UserService userService;
 
     @PostMapping(value = "/login")
     public ApiResponse<AuthResponseDTO> login(@RequestBody AuthRequestDTO loginDTO) {
@@ -39,5 +40,11 @@ public class AuthController {
         String token = tokenResponse.get();
 
         return new ApiResponse<>(new AuthResponseDTO(token));
+    }
+
+    @GetMapping("/logged-in")
+    public ResponseEntity<User> getLoggedInUser(Authentication authentication) {
+        User user = userService.findByUsername(authentication.getName());
+        return ResponseEntity.ok(user);
     }
 }

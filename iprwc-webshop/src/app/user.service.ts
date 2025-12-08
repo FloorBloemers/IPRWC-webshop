@@ -1,35 +1,35 @@
 import {Injectable} from '@angular/core';
-import {Customer} from "./models/customer.model";
+import {User} from "./models/user.model";
 import {ApiService} from "./shared/services/api.service";
 import {map, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
-export class CustomerService {
-  private customer: Customer = {} as Customer;
+export class UserService {
+  private user: User = {} as User;
 
   constructor(private apiService: ApiService) {
   }
 
-  getCustomerFromApi(): Observable<Customer> {
+  getUserFromApi(): Observable<User> {
     return this.apiService.getLoggedInCustomer().pipe(
       map((response) => {
         if (response.status === 200) {
-          return response.body as Customer;
+          return response.body as User;
         } else {
-          throw new Error('Unexpected status when fetching customer');
+          throw new Error('Unexpected status when fetching user');
         }
       })
     );
 
   }
 
-  setCustomer(customer: Customer) {
-    this.customer = customer;
+  setUser(user: User) {
+    this.user = user;
   }
 
-  getCustomer(): Customer {
-    return this.customer;
+  getUser(): User {
+    return this.user;
   }
 }

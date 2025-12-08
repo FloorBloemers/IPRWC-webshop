@@ -11,7 +11,6 @@ import {DropdownDirective} from "./shared/dropdown.directive";
 import {AppRoutingModule} from "./app-routing.module";
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
-import {CustomerFormComponent} from "./customer-form/customer-form.component";
 import { ConfirmOrderComponent } from './confirm-order/confirm-order.component';
 import { HomeComponent } from './home/home.component';
 import { ProductComponent } from './product/product.component';
@@ -38,7 +37,6 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     ProductsComponent,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    CustomerFormComponent,
     AportalComponent,
     CheckoutComponent
   ],

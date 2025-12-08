@@ -6,7 +6,7 @@ import { map, Observable, tap } from 'rxjs';
 import {environment} from "../../environments/environment";
 import {Product} from "../../models/product.model";
 import {Category} from "../../models/category.model";
-import {Customer} from "../../models/customer.model";
+import {User} from "../../models/user.model";
 import {Order} from "../../models/order.model";
 
 
@@ -82,21 +82,6 @@ export class ApiService {
       headers: headers,
       observe: 'response',
     });
-  }
-
-  createCustomer(customer: Customer) {
-    if(customer.optionalRegisteredUser == null) {
-      return this.http.post(`${API_URL}/customers/no-account`, customer, {
-        observe: 'response',
-      })
-    } else {
-      let token = this.authService.getToken();
-      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-      return this.http.post(`${API_URL}/customers`, customer, {
-        headers: headers,
-        observe: 'response',
-      });
-    }
   }
 
   getLoggedInCustomer() {

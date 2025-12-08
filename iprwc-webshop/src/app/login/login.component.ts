@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import {ApiService} from "../shared/services/api.service";
-import {CustomerService} from "../customer.service";
+import {UserService} from "../user.service";
 
 
 @Component({
@@ -24,7 +24,7 @@ export class LoginComponent {
     private router: Router,
     private toastr: ToastrService,
     private apiService: ApiService,
-    private customerService: CustomerService
+    private userService: UserService
   ) {}
 
   submitLogin() {
@@ -34,10 +34,10 @@ export class LoginComponent {
         next: (data) => {
           this.toastr.success('Login successful', 'Success');
 
-          this.customerService.getCustomerFromApi().subscribe({
-            next: (customer) => {
+          this.userService.getUserFromApi().subscribe({
+            next: (user) => {
               // Customer exists → save and go home
-              this.customerService.setCustomer(customer);
+              this.userService.setUser(user);
               this.router.navigate(['/home']);
             },
             error: (err) => {

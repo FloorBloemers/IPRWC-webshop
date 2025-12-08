@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {Customer} from "../models/customer.model";
+import {User} from "../models/user.model";
 import {Product} from "../models/product.model";
 import {CartService} from "../cart.service";
 import {ApiService} from "../shared/services/api.service";
 import {ToastrService} from "ngx-toastr";
-import {CustomerService} from "../customer.service";
+import {UserService} from "../user.service";
 import {Router, RouterLink} from "@angular/router";
 import {Order} from "../models/order.model";
 import {CommonModule} from "@angular/common";
@@ -20,14 +20,14 @@ import {CommonModule} from "@angular/common";
   styleUrl: './confirm-order.component.css'
 })
 export class ConfirmOrderComponent implements OnInit{
-  customer!: Customer;
+  user!: User;
   cartItems!: Product[];
   finalPrice: number = 0;
   order!: Order;
 
   constructor(private cartService: CartService,
               private apiService: ApiService,
-              private customerService: CustomerService,
+              private userService: UserService,
               private toastr: ToastrService,
               private router: Router) {
   }
@@ -35,9 +35,9 @@ export class ConfirmOrderComponent implements OnInit{
   ngOnInit() {
     this.cartItems = this.cartService.getItems();
     this.finalPrice = this.cartService.getTotal();
-    this.customer = this.customerService.getCustomer();
+    this.user = this.userService.getUser();
     this.order = {
-      customer: this.customer,
+      user: this.user,
       totalPrice: this.finalPrice,
       status: "NEW"
     }
@@ -46,8 +46,8 @@ export class ConfirmOrderComponent implements OnInit{
 
   placeOrder() {
       console.log(this.order);
-      if (!this.order || !this.order.customer) {
-        this.toastr.error('Customer not loaded yet', 'Error');
+      if (!this.order || !this.order.user) {
+        this.toastr.error('User not loaded yet', 'Error');
         return;
       }
 
