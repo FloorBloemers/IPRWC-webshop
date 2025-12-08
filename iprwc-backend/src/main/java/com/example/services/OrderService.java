@@ -2,7 +2,9 @@ package com.example.services;
 
 import com.example.exception.OrderNotFoundException;
 import com.example.models.User;
+import com.example.services.UserService;
 import com.example.repositories.UserRepository;
+import com.example.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
