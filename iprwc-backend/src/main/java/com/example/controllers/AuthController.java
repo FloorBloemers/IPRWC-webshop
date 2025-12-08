@@ -27,7 +27,6 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class AuthController {
     private final AuthService authService;
-    private final UserService userService;
     private final JwtService jwtService;
 
     @PostMapping(value = "/login")

@@ -23,14 +23,12 @@ public class OrderController {
 
     private final OrderService orderService;
     private final JwtService jwtService;
-    private final UserService userService;
 
 
     @Autowired
-    public OrderController(OrderService orderService, JwtService jwtService, userDAO userDAO, UserService userService) {
+    public OrderController(OrderService orderService, JwtService jwtService, userDAO userDAO) {
         this.orderService = orderService;
         this.jwtService = jwtService;
-        this.userService = userService;
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")
