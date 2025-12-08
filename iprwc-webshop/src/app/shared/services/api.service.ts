@@ -20,6 +20,25 @@ export class ApiService {
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 
+  // PostLogin(payload: { username: string; password: string }) {
+  //   console.log('Login payload:', payload);
+  //
+  //   return this.http.post(`${API_URL}/auth/login`, payload, {
+  //     headers: { 'Content-Type': 'application/json' }
+  //   }).pipe(
+  //     tap((res: any) => {
+  //       console.log('Raw login response:', res);
+  //
+  //       // Adjust this line once you know the exact key
+  //       const token = res.token || res.payload?.token || res.jwt;
+  //       if (token) {
+  //         this.authService.setToken(token);
+  //         this.authService.setUsername(payload.username);
+  //       }
+  //     })
+  //   );
+  // }
+
   PostLogin(payload: { username: string; password: string }) {
     console.log('Login payload:', payload);
 
@@ -29,8 +48,7 @@ export class ApiService {
       tap((res: any) => {
         console.log('Raw login response:', res);
 
-        // Adjust this line once you know the exact key
-        const token = res.token || res.payload?.token || res.jwt;
+        const token = res.payload?.token;
         if (token) {
           this.authService.setToken(token);
           this.authService.setUsername(payload.username);
@@ -38,6 +56,7 @@ export class ApiService {
       })
     );
   }
+
 
   getProducts() {
     return this.http.get(`${API_URL}/products`).pipe(

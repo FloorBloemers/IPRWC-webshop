@@ -54,14 +54,11 @@ public class AuthController {
     @GetMapping("/logged-in")
     public ResponseEntity<User> getLoggedInUser(@RequestHeader("Authorization") String authHeader)
         throws UserNotFoundException {
-        // Strip "Bearer " prefix
         String token = jwtService.getJwtFromToken(authHeader);
 
-        // Extract UUID string from subject
         String userIdString = jwtService.extractUserId(token);
         UUID userId = UUID.fromString(userIdString);
 
-        // Look up user
         User user = userDao.findById(userId)
                 .orElseThrow(() -> new UserNotFoundException("User not found with id: " + userId));
 
