@@ -5,12 +5,14 @@ import {ToastrService} from "ngx-toastr";
 import {CommonModule} from "@angular/common";
 import {User} from "../models/user.model";
 import {UserService} from "../user.service";
+import {HeaderComponent} from "../header/header.component";
 
 @Component({
   selector: 'app-cportal',
   standalone: true,
   imports: [
-    CommonModule
+    CommonModule,
+    HeaderComponent
   ],
   templateUrl: './cportal.component.html',
   styleUrl: './cportal.component.css'

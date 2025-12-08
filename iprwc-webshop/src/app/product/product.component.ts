@@ -3,11 +3,13 @@ import {Product} from "../models/product.model";
 import {ApiService} from "../shared/services/api.service";
 import {CartService} from "../cart.service";
 import { ActivatedRoute } from '@angular/router';
+import {HeaderComponent} from "../header/header.component";
 
 @Component({
   selector: 'app-product',
   standalone: true,
   imports: [
+    HeaderComponent
   ],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'

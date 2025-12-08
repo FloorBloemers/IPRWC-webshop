@@ -50,25 +50,14 @@ public class SpringConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
-                .authorizeHttpRequests(auth -> auth
+                .authorizeHttpRequests(request -> request
                         .requestMatchers(
                                 "/api/v1/auth/**",           // login/register
-                                "/api/v1/categories/**",        // public categories
-                                "/api/v1/products/**",
-                                "/api/v1/user/**",
+                                "/api/v1/categories",        // public categories
                                 "/api/v1/home",
-                                "/",                    // root path
-                                "/index.html",
-                                "/favicon.ico",
-                                "/**/*.scss",
-                                "/**/*.css",
-                                "/**/*.js",
-                                "/**/*.png",
-                                "/**/*.jpg",
-                                "/**/*.svg",
-                                "/**/*.woff2",
-                                "/**/*.ttf"
-                                ).permitAll()
+                                "/api/v1/",
+                                "/api/v1/products/**"
+                        ).permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

@@ -1,4 +1,5 @@
-<div class="container">
+<app-header></app-header>
+<div class="container" *ngIf="isAdmin">
   <h2>Product Management</h2>
   <h3>Adding products</h3>
   <form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">

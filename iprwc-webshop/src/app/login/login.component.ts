@@ -6,12 +6,13 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import {ApiService} from "../shared/services/api.service";
 import {UserService} from "../user.service";
+import {HeaderComponent} from "../header/header.component";
 
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule],
+  imports: [CommonModule, FormsModule, HttpClientModule, HeaderComponent],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss',]
 })
