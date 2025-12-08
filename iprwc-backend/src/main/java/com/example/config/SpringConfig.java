@@ -1,4 +1,4 @@
-packaga com.example.cinfog
+package com.example.config;
 
 import com.example.daos.userDAO;
 import lombok.RequiredArgsConstructor;
