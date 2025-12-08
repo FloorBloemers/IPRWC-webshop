@@ -26,9 +26,6 @@ public class userDAO implements UserDetailsService {
     public Optional<User> findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
-    public Optional<Set<User>> findAllByUsername(String username) {
-        return userRepository.findAllByUsername(username);
-    }
     public User save(User user) {
         return userRepository.save(user);
     }

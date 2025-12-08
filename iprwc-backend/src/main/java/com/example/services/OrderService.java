@@ -3,13 +3,11 @@ package com.example.services;
 import com.example.exception.OrderNotFoundException;
 import com.example.models.User;
 import com.example.models.Order;
-import com.example.services.UserService;
-import com.example.repositories.UserRepository;
+import com.example.daos.userDAO;
 import com.example.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -18,12 +16,12 @@ import java.util.UUID;
 public class OrderService {
 
     private final OrderRepository orderRepository;
-    private final UserService userService;
+    private final userDAO userDAO;
 
     @Autowired
-    public OrderService(OrderRepository orderRepository, UserService userService) {
+    public OrderService(OrderRepository orderRepository, userDAO userDAO) {
         this.orderRepository = orderRepository;
-        this.userService = userService;
+        this.userDAO = userDAO;
     }
 
     public List<Order> getAllOrders() {
@@ -35,7 +33,8 @@ public class OrderService {
     }
 
     public List<Order> getOrdersByUserId(UUID userId) {
-        User userFromDatabase = userService.findById(userId);
+        User userFromDatabase = userDAO.findById(userId)
+                .orElseThrow(() -> new OrderNotFoundException("User not found with ID: " + userId));
         return orderRepository.findByUser(userFromDatabase);
     }
 

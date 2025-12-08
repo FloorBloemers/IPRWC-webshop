@@ -2,12 +2,12 @@ package com.example.controllers;
 
 
 import com.example.daos.userDAO;
-import com.example.services.UserService;
 import com.example.services.JwtService;
 import com.example.dtos.AuthRequestDTO;
 import com.example.dtos.AuthResponseDTO;
 import com.example.models.ApiResponse;
 import com.example.models.User;
+import com.example.exception.UserNotFoundException;
 import com.example.services.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -52,14 +52,11 @@ public class AuthController {
 
     @GetMapping("/logged-in")
     public ResponseEntity<User> getLoggedInUser(@RequestHeader("Authorization") String authHeader) {
-        // Extract token from "Bearer <token>"
         String token = authHeader.replace("Bearer ", "").trim();
+        UUID userId = jwtService.extractUserId(token);
 
-        // Decode userId from token
-        Long userId = jwtService.extractUserId(token);
-
-        // Look up user in DB
-        User user = userService.findById(userId);
+        User user = userDAO.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException("User not found with id: " + userId));
 
         return ResponseEntity.ok(user);
     }
