@@ -4,6 +4,7 @@ import com.example.repositories.UserRepository;
 import com.example.daos.userDAO;
 import com.example.models.Role;
 import com.example.models.User;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
