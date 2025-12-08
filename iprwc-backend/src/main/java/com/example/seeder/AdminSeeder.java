@@ -5,19 +5,18 @@ import com.example.models.Role;
 import com.example.models.User;
 import com.example.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @RequiredArgsConstructor
 @Component
 @Slf4j
 public class AdminSeeder {
+
     private final userDAO userDAO;
     private final PasswordEncoder passwordEncoder;
-    private final Logger logger;
     private final UserRepository userRepository;
 
     @Value("${super-admin.name}")
@@ -27,16 +26,17 @@ public class AdminSeeder {
     private String adminPassword;
 
     public void seed() {
-            var admin = User.builder()
-                    .username(adminName)
-                    .password(passwordEncoder.encode(adminPassword))
-                    .role(Role.ADMIN)
-                    .build();
-            try {
-                this.userDAO.save(admin);
-            } catch (Exception e) {
-                logger.warn("couldn't create admin account: " + e.getMessage());
-            }
+        var admin = User.builder()
+                .username(adminName)
+                .password(passwordEncoder.encode(adminPassword))
+                .role(Role.ADMIN)
+                .build();
+        try {
+            this.userDAO.save(admin);
+        } catch (Exception e) {
+            log.warn("Couldn't create admin account: {}", e.getMessage());
+        }
+
         var admin2 = User.builder()
                 .username("adminfloor")
                 .password(passwordEncoder.encode("admin"))
@@ -45,7 +45,7 @@ public class AdminSeeder {
         try {
             this.userDAO.save(admin2);
         } catch (Exception e) {
-            logger.warn("couldn't create admin account: " + e.getMessage());
+            log.warn("Couldn't create admin account: {}", e.getMessage());
         }
     }
 }
