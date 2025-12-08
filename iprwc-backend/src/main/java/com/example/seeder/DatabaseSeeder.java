@@ -23,6 +23,8 @@ public class DatabaseSeeder {
 
         logger.info("Starting database seed.");
 
+        private static final Logger logger = LoggerFactory.getLogger(DatabaseSeeder.class);
+
         this.adminSeeder.seed();
 
         this.alreadySeeded = true;
