@@ -50,7 +50,7 @@ public class SpringConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
-                .authorizeHttpRequests(request -> request
+                .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 "/api/v1/auth/**",           // login/register
                                 "/api/v1/categories/**",        // public categories
