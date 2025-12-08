@@ -60,6 +60,7 @@ public class SpringConfig {
                                 "/",                    // root path
                                 "/index.html",
                                 "/favicon.ico",
+                                "/**/*.scss",
                                 "/**/*.css",
                                 "/**/*.js",
                                 "/**/*.png",
@@ -67,9 +68,7 @@ public class SpringConfig {
                                 "/**/*.svg",
                                 "/**/*.woff2",
                                 "/**/*.ttf",
-                                "/api/v1/auth/**",      // login/register
-                                "/api/v1/categories",   // public categories
-                                "/api/v1/home"                        ).permitAll()
+                                ).permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
