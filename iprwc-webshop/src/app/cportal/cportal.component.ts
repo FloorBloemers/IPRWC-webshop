@@ -26,8 +26,6 @@ export class CportalComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.parseOrders();
-
     this.userService.getUserFromApi().subscribe({
       next: (user) => {
         this.user = user;
@@ -37,22 +35,6 @@ export class CportalComponent implements OnInit{
         console.error(err);
       }
     });
-  }
-
-  parseOrders() {
-    this.apiService.getOrders().subscribe({
-      next: (response) => {
-        let body = JSON.stringify(response.body);
-        let parsed = JSON.parse(body);
-        if (response.status === 200) {
-          this.orders = parsed;
-        } else {
-          this.toastr.error('An error occured when fetching orders', 'Error');
-          // console.error('An error occured when fetching orders');
-        }
-      }
-    })
-
   }
 
 }

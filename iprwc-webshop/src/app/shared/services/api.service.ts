@@ -84,10 +84,10 @@ export class ApiService {
     });
   }
 
-  getLoggedInCustomer() {
+  getLoggedInUser() {
     let token = this.authService.getToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get(`${API_URL}/customers/logged-in`, {
+    return this.http.get(`${API_URL}/auth/logged-in`, {
       headers: headers,
       observe: 'response'
     })
@@ -100,15 +100,6 @@ export class ApiService {
         headers: headers,
         observe: 'response',
       });
-  }
-
-  getOrders() {
-    let token = this.authService.getToken();
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get(`${API_URL}/orders/logged-in`, {
-      headers: headers,
-      observe: 'response'
-    })
   }
 
   getAllOrders() {

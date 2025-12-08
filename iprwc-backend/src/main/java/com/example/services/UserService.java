@@ -31,8 +31,4 @@ public class UserService {
         return userRepository.findById(userId)
                 .orElseThrow(() -> new UserIdNotFoundException("User not found: " + username));
     }
-
-    public User getLoggedInUser(Authentication authentication) {
-        return findByUsername(authentication.getName());
-    }
 }

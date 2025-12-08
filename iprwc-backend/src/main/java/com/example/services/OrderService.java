@@ -2,6 +2,7 @@ package com.example.services;
 
 import com.example.exception.OrderNotFoundException;
 import com.example.models.User;
+import com.example.models.Order;
 import com.example.services.UserService;
 import com.example.repositories.UserRepository;
 import com.example.repositories.OrderRepository;

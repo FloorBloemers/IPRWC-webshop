@@ -13,7 +13,7 @@ export class UserService {
   }
 
   getUserFromApi(): Observable<User> {
-    return this.apiService.getLoggedInCustomer().pipe(
+    return this.apiService.getLoggedInUser().pipe(
       map((response) => {
         if (response.status === 200) {
           return response.body as User;
