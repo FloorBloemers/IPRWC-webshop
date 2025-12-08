@@ -35,7 +35,7 @@ public class OrderService {
     }
 
     public List<Order> getOrdersByUserId(UUID userId) {
-        User userFromDatabase = userService.getUserById(userId);
+        User userFromDatabase = userService.findById(userId);
         return orderRepository.findByUser(userFromDatabase);
     }
 
