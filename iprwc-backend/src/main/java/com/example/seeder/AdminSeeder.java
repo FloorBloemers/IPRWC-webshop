@@ -16,7 +16,8 @@ public class AdminSeeder {
 
     private final userDAO userDAO;
     private final PasswordEncoder passwordEncoder;
-    private final Logger logger;
+    private static final Logger log = LoggerFactory.getLogger(AdminSeeder.class);
+
 
     @Value("${super-admin.name}")
     private String adminName;
