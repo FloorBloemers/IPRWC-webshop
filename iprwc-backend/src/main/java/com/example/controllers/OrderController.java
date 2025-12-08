@@ -22,23 +22,14 @@ public class OrderController {
 
     private final OrderService orderService;
     private final JwtService jwtService;
-    private final CustomerService customerService;
+    private final UserService userService;
 
 
     @Autowired
-    public OrderController(OrderService orderService, JwtService jwtService, userDAO userDAO, CustomerService customerService) {
+    public OrderController(OrderService orderService, JwtService jwtService, userDAO userDAO, UserService userService) {
         this.orderService = orderService;
         this.jwtService = jwtService;
-        this.customerService = customerService;
-    }
-
-    @GetMapping("/logged-in")
-    public ResponseEntity<List<Order>> getLoggedInCustomerOrders(@RequestHeader("Authorization") String request) {
-        String jwt = jwtService.getJwtFromToken(request);
-        String userId = jwtService.extractUserId(jwt);
-        System.out.println("Extracted userId from JWT: " + userId);
-        List<Order> orders = orderService.getOrdersByUserId(UUID.fromString(userId));
-        return new ResponseEntity<>(orders, HttpStatus.OK);
+        this.userService = userService;
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")
@@ -59,7 +50,7 @@ public class OrderController {
     public ResponseEntity<Order> createOrder(@RequestBody Order order, @RequestHeader("Authorization") String request) {
         String jwt = jwtService.getJwtFromToken(request);
         String userId = jwtService.extractUserId(jwt);
-        order.setCustomer(customerService.getCustomerByUserId(UUID.fromString(userId)));
+        order.setUser(UserService.getUserByUserId(UUID.fromString(userId)));
         Order createdOrder = orderService.createOrder(order);
         return new ResponseEntity<>(createdOrder, HttpStatus.CREATED);
     }
