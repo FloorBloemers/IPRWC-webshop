@@ -2,6 +2,7 @@ package com.example.controllers;
 
 import com.example.daos.userDAO;
 import com.example.exception.OrderNotFoundException;
+import com.example.exception.UserNotFoundException;
 import com.example.models.Order;
 import com.example.models.User;
 import com.example.services.JwtService;
@@ -49,7 +50,8 @@ public class OrderController {
     public ResponseEntity<Order> createOrder(@RequestBody Order order, @RequestHeader("Authorization") String request) {
         String jwt = jwtService.getJwtFromToken(request);
         String userId = jwtService.extractUserId(jwt);
-        order.setUser(userDAO.findById(UUID.fromString(userId)));
+        order.setUser(userDao.findById(UUID.fromString(userId)));
+        .orElseThrow(() -> new UserNotFoundException("User not found with id: " + userId));
         Order createdOrder = orderService.createOrder(order);
         return new ResponseEntity<>(createdOrder, HttpStatus.CREATED);
     }
