@@ -67,7 +67,7 @@ public class SpringConfig {
                                 "/**/*.jpg",
                                 "/**/*.svg",
                                 "/**/*.woff2",
-                                "/**/*.ttf",
+                                "/**/*.ttf"
                                 ).permitAll()
                         .anyRequest().authenticated()
                 )
