@@ -69,7 +69,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             return;
         }
 
-        // Extract role claim from JWT and map to authority
         String role = jwtService.extractClaim(jwt, claims -> claims.get("role", String.class));
         List<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority(role));
 

@@ -54,7 +54,8 @@ public class SpringConfig {
                         .requestMatchers(
                                 "/api/v1/auth/**",           // login/register
                                 "/api/v1/categories",        // public categories
-                                "/api/v1/home"              // homepage
+                                "/api/v1/home",
+                                "/api/v1/"// homepage
                         ).permitAll()
                         .anyRequest().authenticated()
                 )
