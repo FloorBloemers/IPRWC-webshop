@@ -29,6 +29,7 @@ import java.util.UUID;
 public class AuthController {
     private final AuthService authService;
     private final JwtService jwtService;
+    private final userDao userDao;
 
     @PostMapping(value = "/login")
     public ApiResponse<AuthResponseDTO> login(@RequestBody AuthRequestDTO loginDTO) {
@@ -53,7 +54,8 @@ public class AuthController {
     @GetMapping("/logged-in")
     public ResponseEntity<User> getLoggedInUser(@RequestHeader("Authorization") String authHeader) {
         String token = authHeader.replace("Bearer ", "").trim();
-        UUID userId = jwtService.extractUserId(token);
+        UUID uuid = UUID.fromString(token);
+        UUID userId = jwtService.extractUserId(uuid);
 
         User user = userDAO.findById(userId)
                 .orElseThrow(() -> new UserNotFoundException("User not found with id: " + userId));
