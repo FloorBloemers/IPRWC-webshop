@@ -6,6 +6,7 @@ import {CommonModule} from "@angular/common";
 import {User} from "../models/user.model";
 import {UserService} from "../user.service";
 import {HeaderComponent} from "../header/header.component";
+import {AuthService} from "../shared/services/auth.service";
 
 @Component({
   selector: 'app-cportal',
@@ -21,21 +22,19 @@ export class CportalComponent implements OnInit{
 
   orders: Order[] = [];
   user: User = {} as User;
+  username: string | null = '';
+  isAdmin: boolean = false;
 
   constructor(private apiService: ApiService,
-              private userService: UserService,
+              private authService: AuthService,
               private toastr: ToastrService) {
   }
 
   ngOnInit() {
-    this.userService.getUserFromApi().subscribe({
-      next: (user) => {
-        this.user = user;
-      },
-      error: (err) => {
-        this.toastr.error('Failed to load customer', 'Error');
-        console.error(err);
-      }
+    this.username = this.authService.getUsername();
+    this.isAdmin = this.authService.isAdmin();
+    this.authService.getUsernameObservable().subscribe(name => {
+      this.username = name;
     });
   }
 
