@@ -166,4 +166,13 @@ export class ApiService {
     });
 
   }
+
+  getOrders() {
+    let token = this.authService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${API_URL}/orders/logged-in`, {
+      headers: headers,
+      observe: 'response'
+    })
+  }
 }

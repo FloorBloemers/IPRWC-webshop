@@ -8,13 +8,16 @@ import {UserService} from "../user.service";
 import {Router, RouterLink} from "@angular/router";
 import {Order} from "../models/order.model";
 import {CommonModule} from "@angular/common";
+import {AuthService} from "../shared/services/auth.service";
+import {HeaderComponent} from "../header/header.component";
 
 @Component({
   selector: 'app-confirm-order',
   standalone: true,
   imports: [
     RouterLink,
-    CommonModule
+    CommonModule,
+    HeaderComponent
   ],
   templateUrl: './confirm-order.component.html',
   styleUrl: './confirm-order.component.css'
@@ -24,11 +27,13 @@ export class ConfirmOrderComponent implements OnInit{
   cartItems!: Product[];
   finalPrice: number = 0;
   order!: Order;
+  username: string | null = '';
 
   constructor(private cartService: CartService,
               private apiService: ApiService,
               private userService: UserService,
               private toastr: ToastrService,
+              private authService: AuthService,
               private router: Router) {
   }
 
@@ -36,6 +41,7 @@ export class ConfirmOrderComponent implements OnInit{
     this.cartItems = this.cartService.getItems();
     this.finalPrice = this.cartService.getTotal();
     this.user = this.userService.getUser();
+    this.username = this.authService.getUsername();
     this.order = {
       user: this.user,
       totalPrice: this.finalPrice,

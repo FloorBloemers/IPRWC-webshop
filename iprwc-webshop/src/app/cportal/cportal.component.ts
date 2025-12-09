@@ -36,6 +36,23 @@ export class CportalComponent implements OnInit{
     this.authService.getUsernameObservable().subscribe(name => {
       this.username = name;
     });
+    this.parseOrders();
+  }
+
+  parseOrders() {
+    this.apiService.getOrders().subscribe({
+      next: (response) => {
+        let body = JSON.stringify(response.body);
+        let parsed = JSON.parse(body);
+        if (response.status === 200) {
+          this.orders = parsed;
+        } else {
+          this.toastr.error('An error occured when fetching orders', 'Error');
+          // console.error('An error occured when fetching orders');
+        }
+      }
+    })
+
   }
 
 }
