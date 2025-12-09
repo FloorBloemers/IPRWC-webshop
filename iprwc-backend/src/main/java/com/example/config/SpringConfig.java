@@ -89,7 +89,7 @@ public class SpringConfig {
                                 "/api/v1/products",
                                 "/api/v1/categories").permitAll()
                         .requestMatchers("/api/v1/user").hasRole("ADMIN")
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll()
                 )
 //                .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
