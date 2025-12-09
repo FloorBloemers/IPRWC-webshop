@@ -27,7 +27,6 @@ public class UserController {
     private final UserMapper userMapper;
     private final AuthService authService;
 
-    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping
     @ResponseBody
     public ApiResponse<List<UserResponseDTO>> getUsers() {
