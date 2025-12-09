@@ -69,12 +69,30 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             return;
         }
 
-        String role = jwtService.extractClaim(jwt, claims -> claims.get("role", String.class));
-        List<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority(role));
+        String token = jwtService.getJwtFromToken(authHeader);
+        Claims claims;
+        try {
+            claims = jwtService.extractClaim(token, c -> c);  // get full claims
+        } catch (Exception e) {
+            filterChain.doFilter(request, response);
+            return;
+        }
 
-        UsernamePasswordAuthenticationToken authToken =
-                new UsernamePasswordAuthenticationToken(user, null, authorities);
-        authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+        String userId = claims.getSubject();
+        String authrole = claims.get("role", String.class);
+
+        SimpleGrantedAuthority authority =
+                new SimpleGrantedAuthority("ROLE_" + role);
+
+        UsernamePasswordAuthenticationToken auth =
+                new UsernamePasswordAuthenticationToken(
+                        userId,
+                        null,
+                        List.of(authority)
+                );
+
+
+        auth.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
         SecurityContextHolder.getContext().setAuthentication(authToken);
 

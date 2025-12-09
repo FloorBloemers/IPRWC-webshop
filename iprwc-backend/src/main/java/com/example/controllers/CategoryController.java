@@ -35,14 +35,14 @@ public class CategoryController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<Category> createCategory(@RequestBody Category category) {
         Category createdCategory = categoryService.createCategory(category);
         return new ResponseEntity<>(createdCategory, HttpStatus.CREATED);
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{categoryId}")
     public ResponseEntity<Category> updateCategory(@PathVariable Long categoryId, @RequestBody Category updatedCategory) {
         try {
@@ -53,7 +53,7 @@ public class CategoryController {
         }
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{categoryId}")
     public ResponseEntity<Void> deleteCategory(@PathVariable Long categoryId) {
         categoryService.deleteCategory(categoryId);

@@ -33,7 +33,7 @@ public class OrderController {
         this.userDao = userDao;
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping
     public ResponseEntity<List<Order>> getAllOrders() {
         List<Order> orders = orderService.getAllOrders();
@@ -70,7 +70,7 @@ public class OrderController {
         return new ResponseEntity<>(createdOrder, HttpStatus.CREATED);
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{orderId}")
     public ResponseEntity<Order> updateOrder(@PathVariable Long orderId, @RequestBody Order updatedOrder) {
         try {
@@ -81,7 +81,7 @@ public class OrderController {
         }
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PatchMapping("/{orderId}/status")
     public ResponseEntity<Order> updateOrderStatus(@PathVariable Long orderId, @RequestBody String status) {
         try {
@@ -92,7 +92,7 @@ public class OrderController {
         }
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{orderId}")
     public ResponseEntity<Void> deleteOrder(@PathVariable Long orderId) {
         orderService.deleteOrder(orderId);

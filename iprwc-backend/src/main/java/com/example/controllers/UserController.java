@@ -27,7 +27,7 @@ public class UserController {
     private final UserMapper userMapper;
     private final AuthService authService;
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping
     @ResponseBody
     public ApiResponse<List<UserResponseDTO>> getUsers() {
@@ -40,7 +40,7 @@ public class UserController {
         return new ApiResponse<>(res);
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ApiResponse<AuthResponseDTO> register(@RequestBody UserCreateDTO userCreateDTO) {
         Optional<User> foundUser = userDAO.findByUsername(userCreateDTO.getUsername());
@@ -75,7 +75,7 @@ public class UserController {
         return new ApiResponse<>(new AuthResponseDTO(token));
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping(path = {"/{id}"})
     public ApiResponse<UserResponseDTO> editUser(@PathVariable("id") UUID id, @RequestBody UserCreateDTO userCreateDTO) {
         Optional<User> foundUser = userDAO.findById(id);
