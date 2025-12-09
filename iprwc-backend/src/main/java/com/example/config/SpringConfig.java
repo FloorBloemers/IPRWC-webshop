@@ -75,9 +75,20 @@ public class SpringConfig {
                 .csrf(AbstractHttpConfigurer::disable)
 //                .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(request -> request
+                        .requestMatchers(
+                                "/",
+                                "/index.html",
+                                "/home",
+                                "/favicon.ico",
+                                "/assets/**",
+                                "/static/**",
+                                "/js/**",
+                                "/css/**"
+                        ).permitAll()
                         .requestMatchers("/api/v1/auth/**",
                                 "/api/v1/products",
                                 "/api/v1/categories").permitAll()
+                        .requestMatchers("/api/v1/user").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
 //                .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
