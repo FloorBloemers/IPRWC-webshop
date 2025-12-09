@@ -51,7 +51,6 @@ export class ConfirmOrderComponent implements OnInit{
   }
 
   placeOrder() {
-      console.log(this.order);
       if (!this.order || !this.order.user) {
         this.toastr.error('User not loaded yet', 'Error');
         return;

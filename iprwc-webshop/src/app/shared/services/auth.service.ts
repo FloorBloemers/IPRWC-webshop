@@ -18,8 +18,6 @@ export class AuthService {
     const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
     const jsonPayload = decodeURIComponent(atob(base64));
 
-    console.log('JWT claims:', jsonPayload);
-
     return JSON.parse(jsonPayload);
   };
 
@@ -33,7 +31,6 @@ export class AuthService {
 
   public isAdmin(): boolean {
     const token = sessionStorage.getItem('token');
-    console.log(this.parseToken(token));
     if (!token) return false;
 
     const claims = this.parseToken(token);

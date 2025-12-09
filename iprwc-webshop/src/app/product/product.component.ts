@@ -29,8 +29,6 @@ export class ProductComponent implements OnInit {
   }
 
   addToCart() {
-    console.log('Product added to cart:', this.product.name);
-    console.log(this.id);
     this.cartService.addToCart(this.product);
   }
 }

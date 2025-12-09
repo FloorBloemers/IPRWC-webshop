@@ -40,13 +40,10 @@ export class ApiService {
   // }
 
   PostLogin(payload: { username: string; password: string }) {
-    console.log('Login payload:', payload);
-
     return this.http.post(`${API_URL}/auth/login`, payload, {
       headers: { 'Content-Type': 'application/json' }
     }).pipe(
       tap((res: any) => {
-        console.log('Raw login response:', res);
 
         const token = res.payload?.token;
         if (token) {
